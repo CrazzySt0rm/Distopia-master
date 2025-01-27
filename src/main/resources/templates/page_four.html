@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width: device-width, initial-scale=1.0">
+    <title>Fantasy</title>
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Feather.png">
+</head>
+
+<div class="navbar">
+    <label for="touch">
+        <span1>titre</span1>
+    </label>
+    <input type="checkbox" id="touch">
+
+    <ul class="slide">
+        <li><a href="home">Home</a></li>
+        <li><a href="animation_3D">Вторая страница</a></li>
+        <li><a href="page_three">Третья страница</a></li>
+        <li><a href="page_four">Четвёртая страница</a></li>
+    </ul>
+</div>
+
+
+<!--    <div class="time">-->
+<!--        <div class="time_form">-->
+<!--            <p id="date" style="font-size:20px;"></p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;    <p>Серверное время <span></span> <span th:text="${serverTime}"/></p>&ndash;&gt;-->
+<!--    </div>-->
+
+
+
+
+
+
+
+
+<style>
+
+    body {
+
+    background: linear-gradient(-45deg, #000, #fff);
+    background-image: url(https://image.fonwall.ru/o/wo/knight-shield-sword.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img1.fonwall.ru), no-repeat;
+    cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo26.cur), auto;
+<!--    cursor: url("images/cursor.cur"), auto;-->
+    }
+    a {
+<!--    cursor: url("images/cursor.cur"), auto;-->
+    }
+
+
+    button {
+<!--    cursor: url("images/cursor.cur"), auto;-->
+    }
+
+
+
+
+
+    .mail {
+    background: url(https://trikky.ru/wp-content/blogs.dir/1/files/2020/06/08/image-12.jpeg);
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+
+
+    border-radius: 50%;
+    }
+
+    .mail_container {
+    margin-top: 50%;
+    margin: auto;
+    }
+
+
+    h1 {padding: 40px; text-align: center; font-size: 1.5em;}
+
+    li a {text-decoration : none; color : #2d2f31;}
+
+
+    nav1 {
+      width : 300px;
+      background: #d9d9d9;
+      margin : 40px auto;
+    }
+
+    span1 {
+      padding : 30px;
+      background : #2d2f31;
+      color : white;
+      font-size : 1.2em;
+      font-variant : small-caps;
+      cursor : pointer;
+      display: block;
+    }
+
+    span1::after {
+      float: right;
+      right: 10%;
+      content: "+";
+    }
+
+    .slide {
+      clear:both;
+      width:100%;
+      height:0px;
+      overflow: hidden;
+      text-align: center;
+      transition: height .4s ease;
+    }
+
+    .slide li {padding : 30px;}
+
+    #touch {position: absolute; opacity: 0; height: 0px;}
+
+    #touch:checked + .slide {height: 300px;}
+
+    .rt {
+    margin-top: 150px;
+    }
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+
+      outline: none;
+      border-radius: 3px;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+      opacity: 0.7;
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+      border-radius: 3px;
+    }
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+      border-radius: 3px;
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
+    }
+
+    nav1 {
+      width : 300px;
+      background: #d9d9d9;
+      margin : 40px auto;
+    }
+
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+    .card {
+
+            margin-left: 35%;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #faa301;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            background: linear-gradient(-45deg, #000, #fff);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-title {
+            color: #27ae60;
+        }
+
+        .app-subtitle {
+            color: #333;
+        }
+
+        .file-label {
+            cursor: pointer;
+            display: flexbox;
+            padding: 7px;
+            background-color: #c834db;
+            color: #fff;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            transition: background-color 0.3s;
+        }
+
+        .file-label:hover {
+            background-color: #73ec10;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .progress-container {
+            margin-top: 15px;
+            position: relative;
+            height: 20px;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: #2ecc71;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 14px;
+            display: none;
+        }
+
+        .file-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .file-name {
+            color: rgb(19, 2, 255);
+        }
+
+        .clear-button {
+            padding: 5px 12px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none;
+        }
+
+        .clear-button:hover {
+            background-color: #c0392b;
+        }
+
+        .preview-container img {
+            max-width: 100%;
+            max-height: 150px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .close {
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+    .rndfr {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    }
+
+
+
+    .klik {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    }
+    .klik-buttons {
+    display: flex;
+    justify-content: right;
+    }
+
+    .time {
+    margin: auto;
+
+    }
+
+
+    .time_form_x {
+
+    background: linear-gradient(to right, #000000, #434343);;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 140px;
+
+
+
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+
+    }
+
+
+
+
+  .custom-btn {
+    margin-top: 40px;
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  .btn-12{
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+    border:none;
+    box-shadow: none;
+    width: 130px;
+    height: 40px;
+    line-height: 42px;
+    -webkit-perspective: 230px;
+    perspective: 230px;
+  }
+  .btn-12 span {
+    background: rgb(126, 31, 150);
+  background: linear-gradient(0deg, rgb(214, 167, 135) 0%, rgb(197, 100, 9) 100%);
+    display: block;
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    border-radius: 5px;
+    margin:0;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  .btn-12 span:nth-child(1) {
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+    -webkit-transform: rotateX(90deg);
+    -moz-transform: rotateX(90deg);
+    transform: rotateX(90deg);
+    -webkit-transform-origin: 50% 50% -20px;
+    -moz-transform-origin: 50% 50% -20px;
+    transform-origin: 50% 50% -20px;
+  }
+  .btn-12 span:nth-child(2) {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-transform-origin: 50% 50% -20px;
+    -moz-transform-origin: 50% 50% -20px;
+    transform-origin: 50% 50% -20px;
+  }
+  .btn-12:hover span:nth-child(1) {
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+  .btn-12:hover span:nth-child(2) {
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+   color: transparent;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
+
+
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const fInput = document.getElementById('fileInput');
+        const pBar = document.getElementById('progressBar');
+        const pText = document.getElementById('progressText');
+        const fName = document.getElementById('fileName');
+        const modal = document.getElementById('myModal');
+        const cModal = document.getElementById('closeModal');
+        const uImage = document.getElementById('uploadedImageModal');
+        const pContainer = document.getElementById('previewContainer');
+        const cBtn = document.getElementById('clearButton');
+        fInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onloadstart = () => {
+                    pBar.style.width = '0%';
+                    pText.style.display = 'block';
+                    pText.innerText = '0%';
+                    pContainer.style.display = 'none';
+                    cBtn.style.display = 'none';
+                };
+                reader.onprogress = (event) => {
+                    if (event.lengthComputable) {
+                        const progress =
+                            (event.loaded / event.total) * 100;
+                        pBar.style.width = `${progress}%`;
+                        pText.innerText = `${Math.round(progress)}%`;
+                    }
+                };
+                reader.onload = () => {
+                    const uploadTime = 4000;
+                    const interval = 50;
+                    const steps = uploadTime / interval;
+                    let currentStep = 0;
+                    const updateProgress = () => {
+                        const progress = (currentStep / steps) * 100;
+                        pBar.style.width = `${progress}%`;
+                        pText.innerText = `${Math.round(progress)}%`;
+                        currentStep++;
+
+                        if (currentStep <= steps) {
+                            setTimeout(updateProgress, interval);
+                        } else {
+                            pBar.style.width = '100%';
+                            pText.innerText = '100%';
+                            fName.innerText = `File Name: ${file.name}`;
+                            pContainer.innerHTML =
+                                `<img src="${reader.result}"
+                                      alt="Preview" id="previewImage">`;
+                            pContainer.style.display = 'block';
+                            cBtn.style.display = 'block';
+                        }
+                    };
+                    setTimeout(updateProgress, interval);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a valid image file.');
+                fInput.value = '';
+            }
+        });
+        pContainer.addEventListener('click', () => {
+            modal.style.display = 'block';
+            uImage.src = document.getElementById('previewImage').src;
+        });
+        cModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        cBtn.addEventListener('click', () => {
+            fInput.value = '';
+            pBar.style.width = '0%';
+            pText.style.display = 'none';
+            fName.innerText = '';
+            pContainer.style.display = 'none';
+            cBtn.style.display = 'none';
+        });
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<script>
+    function addItem() {
+        alert("Не забудь поиграть в Lost Ark!")
+    }
+</script>
+
+<script>
+    function addMail() {
+        alert("Письмо успешно отправлено.")
+    }
+</script>
+
+<script>
+    setInterval(() => {
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+
+        // Добавляем ведущий ноль к минутам и секундам, если они меньше 10
+        minutes = String(minutes).padStart(2, '0');
+        seconds = String(seconds).padStart(2, '0');
+
+        document.querySelector('#date').innerHTML = `${hours}:${minutes}:${seconds}`;
+    }, 1000);
+</script>
+<body>
+
+<div class="time_form_x">
+    <p id="date" style="font-size:20px;"></p>
+</div>
+
+<div class="mail">
+    <div class="mail_container">
+        <form action="/create_email" method="post" enctype="multipart/form-data">
+            <label>
+                <input type="text" name="message" placeholder="e-mail">
+            </label><br><br>
+            <input type="submit" class="button28" value="отправить письмо" onclick="addMail()"><br><br>
+        </form>
+    </div>
+</div>
+
+<!--<div class="time">-->
+<!--    Current time is <span th:text="${serverTimeH}"/> hours, <span th:text="${serverTimeM}"/> minutes.-->
+<!--</div>-->
+
+<div class="window">
+    <input type="button" class="btn-12" value="Напоминание" onclick="addItem();"/>
+</div>
+
+<div class="dl_w">
+    <h1>Изображение из базы данных:</h1>
+    <h1>Image Display</h1>
+    <!-- Здесь будет отображаться изображение -->
+    <img th:src="'data:image/jpeg;base64,' + ${imageData}" alt="Image" />
+
+
+    <a href="#" class="button28">Скачать</a>
+
+<!--    <img th:src="@{'data:images_xt/jpeg;base64,' + ${imageData}}"/>-->
+
+<!--    <p th:if="${#strings.isEmpty(imageData)}">Image not found.</p>-->
+
+<!--    <img th:src="@{'data:image/jpeg;base64,'+${imageData.generateBase64Image()}}" />-->
+
+</div>
+
+
+<div class="card">
+    <menu>
+        <details>
+
+            <form action="/image_stat/create" method="post" enctype="multipart/form-data">
+
+
+<!--            <form action="/image_stat/create" method="post" enctype="multipart/form-data">-->
+                <h1 class="app-title">
+                    <i class="fas fa-file-upload"></i>
+                    GeeksforGeeks
+                </h1>
+                <h3 class="app-subtitle">
+                    File Upload with Progress Bar
+                </h3>
+                <label for="fileInput" class="file-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    Choose a file
+                </label>
+                <input type="file" id="fileInput" name="file1" class="file-input"/>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="progress-text" id="progressText"></div>
+                </div>
+                <div class="file-details">
+                    <div class="file-name" name="file1" id="fileName"></div>
+                    <button class="clear-button" id="clearButton">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+                <div class="preview-container" id="previewContainer"></div>
+
+                <input type="submit" value="отправить">
+                <!--    <button type="submit">-->
+                <!--        Отправить-->
+                <!--    </button>-->
+                <div class="modal" id="myModal">
+                    <span class="close" id="closeModal">&times;</span>
+                    <img class="modal-content" id="uploadedImageModal">
+                </div>
+
+            </form>
+        </details>
+    </menu>
+</div>
+
+
+
+<!--____________________________________________________________________-->
+
+<div class="klik" id='klik' onclick='klik()'>
+    <canvas id='canvas'
+            style='background-image: url(https://i.pinimg.com/originals/18/c8/3c/18c83c73c4fb0cc28275b2eca5bee4d3.jpg)'></canvas>
+    <br/>
+
+</div>
+
+<div class="klik-buttons">
+    <button class="button28" onclick='moveLeft()'>Left</button>
+    <button class="button28" onclick='moveRight()'>Right</button>
+    <button class="button28" onclick='moveStop()'>Stop</button>
+</div>
+
+<script>
+    var k = 0;
+
+    var canvasWidth = 300;
+    var canvasHeight = 400;
+
+    var spriteWidth = 3376;
+    var spriteHeight = 1609;
+
+    var rows = 4;
+    var cols = 15;
+
+    var trackRight = 1;
+    var trackLeft = 2;
+
+
+    var width = spriteWidth/cols;
+    var height = spriteHeight/rows;
+
+    var curFrame = 0;
+    var frameCount = 8;
+
+    var x=0;
+    var y=0;
+
+    var srcX;
+    var srcY;
+
+    var left =  false;
+    var right =  true;
+
+    var speed = 10;
+
+    var canvas = document.getElementById('canvas');
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    var ctx = canvas.getContext("2d");
+
+    var character = new Image();
+    character.src = "https://mnogoblog.ru/wp-content/uploads/2018/06/girl.png";
+
+    function updateFrame(){
+        curFrame = ++curFrame % frameCount;
+        srcX = curFrame * width;
+        ctx.clearRect(x,y,width,height);
+
+        if(left && x>0){
+            srcY = trackLeft * height;
+            x-=speed;
+        }
+        if(right && x<canvasWidth-width){
+            srcY = trackRight * height;
+            x+=speed;
+        }
+    }
+
+    function draw(){
+        if (left!=right) {
+        updateFrame();
+    }
+        ctx.drawImage(character,srcX,srcY,width,height,x,y,width,height);
+    }
+
+    function klik(){
+
+        if (k==0) {
+        left = true;
+        right = false;
+        }
+        if (k==1){
+        left = false;
+        right = false;
+        }
+        if (k==2) {
+        left = false;
+        right = true;
+        k = -1;
+        }
+        k = k + 1;
+
+    }
+
+    function moveLeft(){
+                left = true;
+                right = false;
+            }
+
+            function moveRight(){
+                left = false;
+                right = true;
+            }
+
+            function moveStop(){
+                left = false;
+                right = false;
+            }
+
+
+    setInterval(draw,100);
+
+</script>
+
+<menu>
+    <details>
+        <div class="hw06">
+
+        </div>
+    </details>
+</menu>
+
+<menu>
+    <details>
+        <div class="hw05">
+
+        </div>
+    </details>
+</menu>
+
+
+<a href="http://wotpack.ru" th:text="@{one}" class="button28"></a>
+
+
+<a href="https://github.com/CrazzySt0rm?tab=repositories" target="_blank">
+    <button class="custom-btn btn-12"><span>Hub</span><span>Git</span></button>
+</a>
+
+
+<div class="pagination">
+    <a href="page_three">&laquo;</a>
+    <a href="home">1</a>
+    <a href="animation_3D">2</a>
+    <a href="page_three">3</a>
+    <a class="active" href="page_four">4</a>
+    <a href="home">&raquo;</a>
+</div>
+
+</body>
+</html>

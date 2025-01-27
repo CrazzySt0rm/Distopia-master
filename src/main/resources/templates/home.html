@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Hexagon.png">
+</head>
+
+<style>
+
+    body {
+    background-image: url("https://img3.akspic.ru/attachments/crops/1/2/1/0/80121/80121-sinij_cvet-prostranstvo-nebo-vektornaya_grafika-atmosfera-1920x1080.jpg");
+<!--    background-image: url("https://img1.akspic.ru/crops/8/9/7/2/7/172798/172798-mustang_shelby_gt500-ford_shelby_gt500_2020_goda-ford_shelbi_gt500_2021_goda-2020_ford_mustang-shelbi_mustang-1920x1080.jpg");-->
+    }
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em 1em;
+      outline: none;
+      border-radius: 3px;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+      opacity: 0.7;
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+
+    }
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
+    }
+
+
+    .nz {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    }
+
+    .bs {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .hz {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .tz {
+    position: fixed;
+    bottom: 0;
+    }
+
+    .fs {
+    display: flex;
+    justify-content: flex-start;
+    }
+
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+
+    .form-sign {
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+    padding: 15px;
+
+    .form-floating {
+<!--    background: gray;-->
+    background: -webkit-linear-gradient(to right, #1f4037, #99f2c8); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1f4037, #99f2c8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 15px;
+
+
+    }
+    h1 {
+    opacity: 0.7;
+    }
+    .form-control {
+    width: 200px;
+    height: 25px;
+    background: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea);
+<!--    background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);-->
+    padding: 10px;
+
+    }
+
+</style>
+<body>
+
+<div class="bs">
+    <button class="button28" onclick="document.getElementById('player').play()">Воспроизведение</button>
+    <button class="button28" onclick="document.getElementById('player').pause()">Пауза</button>
+    <button class="button28" onclick="audio=document.getElementById('player'); audio.currentTime=0; audio.pause(); ">
+        Сначала
+    </button>
+    <button class="button28" onclick="document.getElementById('player').volume+=0.1">Громкость +</button>
+    <button class="button28" onclick="document.getElementById('player').volume-=0.1">Громкость -</button>
+</div>
+
+<div class="hz">
+    <audio id="player" controls="controls" autoplay="autoplay" loop="loop">
+        <source src="https://soundbank.one/wp-content/uploads/sound/Sound_07116.mp3">
+
+        <!--        <source src="https://soundbank.one/wp-content/uploads/sound/Sound_13214.mp3">-->
+    </audio>
+
+</div>
+
+<style>
+    audio::-webkit-media-controls {
+    display: none;
+    }
+</style>
+
+<script>
+    function addItem() {
+        alert("Данные успешно сохранены!")
+    }
+</script>
+
+
+<main class="form-sign">
+    <h1 style="color: #fff">Сообщение</h1>
+
+    <form action="dystopia_message" method="post" enctype="multipart/form-data">
+
+
+        <div class="form-floating">
+            <label for="floatingInput">Ваше имя</label><br>
+            <input type="text" class="form-control" name="name" id="floatingInput" placeholder="" required><br>
+        </div>
+        <div class="form-floating">
+            <label for="floatingPassword">Ваш телефон</label><br>
+            <input type="tel" class="form-control" name="phone" id="floatingPassword" placeholder="" required><br>
+        </div>
+        <div class="form-floating">
+            <label for="floatingInput02">Сообщение</label><br>
+            <input type="text" class="form-control" name="message" id="floatingInput02" placeholder="" required><br>
+        </div>
+
+
+        <div class="form-floating">
+            <label for="floatingInput04">Мужской</label><br>
+            <input type="radio" class="form-control" name="gender" value="male" id="floatingInput04" placeholder=""
+                   required><br>
+            <label for="floatingInput05">Женский</label><br>
+            <input type="radio" class="form-control" name="gender" value="female" id="floatingInput05"
+                   placeholder="" required><br>
+        </div>
+
+        <div class="form-floating">
+
+            <label for="courses">Select Courses</label>
+            <select id="courses" class="form-floating" name="studentCourses">
+                <option value="computer_engineering">Computer Science Engineering</option>
+                <option value="electrical_engineering">Electrical Engineering</option>
+                <option value="mechanical_engineering">Mechanical Engineering</option>
+                <option value="civil_engineering">Civil Engineering</option>
+                <option value="chemical_engineering">Chemical Engineering</option>
+            </select>
+
+
+            <!--        <div class="form-floating">-->
+            <!--            <input type="datetime-local" class="form-control" id="floatingInput03" placeholder="" required>-->
+            <!--            <label for="floatingInput03">Дата</label>-->
+            <!--        </div>-->
+
+            <div class="checkbox mb-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" value="1" name="remember_me" id="rememberMeSwitch">
+                    <label class="form-check-label" for="rememberMeSwitch"> Запомнить меня</label>
+                </div>
+
+            </div>
+            <!--        <button class="w-100 btn btn-lg" type="submit" onclick="switch();">Отправить</button>-->
+            <button class="form-floating" type="submit" onclick="addItem();"> Отправить</button>
+
+        </div>
+
+    </form>
+</main>
+
+
+
+<div class="tz">
+    <div class="pagination">
+        <a href="page_four">&laquo;</a>
+        <a class="active" href="home">1</a>
+        <a href="animation_3D">2</a>
+        <a href="page_three">3</a>
+        <a href="page_four">4</a>
+        <a href="animation_3D">&raquo;</a>
+    </div>
+</div>
+
+
+</body>
+</html>

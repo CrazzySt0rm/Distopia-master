@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Page Sixth</title>
+</head>
+
+<style>
+
+    body {
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+    }
+
+    .buttonCustom {
+    background: linear-gradient(to right, #403b4a, #e7e9bb);
+    box-shadow: (0, 0, 0, 3px);
+    }
+    .buttonCustom:hover {
+    background: linear-gradient(to right, #403b4a, #e7e9bb);
+
+    }
+    .buttonCustom:hover:active {
+    background: linear-gradient(to left, #403b4a, #e7e9bb);
+    transform: 25deg;
+    margin-left: 10px;
+    }
+
+    .card {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .btn-bck {
+    display: flex;
+    justify-content: flex-start;
+    }
+
+    .upl {
+    display: flex;
+    justify-content: center;
+    }
+
+    .upl_two {
+    display: flex;
+    justify-content: center;
+    }
+
+    p {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .present_image {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .xz {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    }
+    .xy {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    }
+
+    .xp {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    }
+
+    .xo {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    }
+
+    .buttonQWE{
+    background: #222222;
+    color: gray;
+    box-shadow: (0, 0, 0, 3px);
+    }
+    .buttonQWE:hover {
+    background: #222222;
+    color: gray;
+    }
+    .buttonQWE:active {
+    background: gray;
+    margin-left: 10px;
+    transform: (0, 0, 0, 5px);
+    }
+    .buttonQWE:hover:active {
+    background: black;
+    color: red;
+    transform: 25deg;
+    }
+
+
+
+
+    .img_from_cloud {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+</style>
+
+<body>
+
+<h1>Шестая страница</h1>
+
+<div class="card">
+
+    <div class="btn-on">
+        <p>On</p>
+    </div>
+
+    <div class="btn-bck">
+        <form action="#">
+            <button class="buttonCustom" type="submit" id="buttonY">noidea</button>
+
+        </form>
+    </div>
+
+    <div class="ml"><p>Off</p></div>
+
+
+</div>
+
+<div class="upl">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label>Файл</label>
+        <input type="file" name="file"><br><br>
+        <label>Название</label>
+        <input type="text" name="name" placeholder="name"><br><br>
+        <label>Описание</label>
+        <input type="text" name="description" placeholder="description"><br><br>
+        <input type="submit" class="buttonCustom" value="upload">
+
+<!--        <input type="text" name="name" placeholder="name">-->
+<!--        <input type="text" name="name" placeholder="name">-->
+<!--        <input type="text" name="name" placeholder="name">-->
+<!--        <input type="text" name="name" placeholder="name">-->
+
+    </form>
+</div>
+
+<div class="present_image">
+
+<!--    <img th:src="@{'/images/' + ${1}}" alt="Пример изображения">-->
+
+    <div class="xz">
+        <form th:action="@{'/images/' + ${1}}">
+            <button class="buttonQWE" type="submit">
+                <img th:src="@{'/images/' + ${1}}" alt="Пример изображения" width="340" height="200">
+            </button>
+        </form>
+
+    </div>
+
+    <div class="xy">
+        <form th:action="@{'/images/' + ${2}}">
+            <button class="buttonQWE" type="submit">
+                <img th:src="@{'/images/' + ${2}}" alt="Пример изображения" width="340" height="200">
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+<p>Старый добрый вариант сохранения изображения в базу данных</p><br><br>
+
+<div class="upl_two">
+
+
+    <form action="/image_stat/create" method="post" enctype="multipart/form-data">
+        <label>Файл</label>
+        <input type="file" name="file1"><br><br>
+        <label>Название</label>
+        <input type="text" name="name" placeholder="name"><br><br>
+        <label>Описание</label>
+        <input type="text" name="description" placeholder="description"><br><br>
+        <input type="submit" class="buttonCustom" value="upload">
+
+        <!--        <input type="text" name="name" placeholder="name">-->
+        <!--        <input type="text" name="name" placeholder="name">-->
+        <!--        <input type="text" name="name" placeholder="name">-->
+        <!--        <input type="text" name="name" placeholder="name">-->
+
+    </form>
+</div>
+
+
+<!--<script>-->
+<!--    function updateImage() {-->
+<!--            // Получаем строку из textarea-->
+<!--            let inputString = document.getElementById('inputData').value;-->
+<!--            console.log("Input string:", inputString);-->
+
+<!--            // Удаляем все лишние пробелы и переносы строк-->
+<!--            inputString = inputString.replace(/[\n\r]+/g, ' ').trim(); // заменяем переносы строк на пробелы и убираем лишние пробелы-->
+<!--            console.log("Trimmed string:", inputString);-->
+
+<!--            // Разделяем строку на части по пробелам-->
+<!--            let parts = inputString.split(/\s+/); // Убираем лишние пробелы и делим по одному или нескольким пробелам-->
+<!--            console.log("Parts array:", parts);-->
+
+<!--            // Проверяем, что вторая часть действительно существует-->
+<!--            if (parts.length >= 2 && parts[1]) {-->
+<!--                let imageURL = parts[1];-->
+<!--                console.log("Extracted URL:", imageURL);-->
+
+<!--                // Проверяем, что URL начинается с http:// или https://-->
+<!--                if (!imageURL.startsWith('http://') && !imageURL.startsWith('https://')) {-->
+<!--                    alert("Неверный формат URL. Пожалуйста, введите полный URL, начиная с http:// или https://.");-->
+<!--                    return;-->
+<!--                }-->
+
+<!--                // Пробуем загрузить изображение-->
+<!--                let testImg = new Image();-->
+<!--                testImg.onload = function() {-->
+<!--                    // Если изображение успешно загрузилось, обновляем src основного тега img-->
+<!--                    document.getElementById('cloudImage').src = imageURL;-->
+<!--                };-->
+<!--                testImg.onerror = function() {-->
+<!--                    alert("Извините, произошла ошибка при загрузке изображения. Проверьте URL.");-->
+<!--                };-->
+<!--                testImg.src = imageURL;-->
+<!--            } else {-->
+<!--                alert("Неверный формат ввода. Пожалуйста, введите данные в формате 'номер URL'.");-->
+<!--            }-->
+<!--        }-->
+<!--</script>-->
+
+<!--<div class="xp">-->
+<!--    <form action="">-->
+<!--        <button class="buttonQWE" type="submit">-->
+<!--            <img src="" width="640" height="480">-->
+<!--        </button>-->
+<!--    </form>-->
+<!--    -->
+<!--    <form action="">-->
+<!--        <button class="buttonQWE" type="submit">-->
+<!--            <img src="" width="640" height="480">-->
+<!--        </button>-->
+<!--    </form>-->
+
+<!--</div>-->
+
+
+<h1>Вставка изображения</h1>
+<p>ID файла: <input type="text" id="fileId" value="1rX3qTEzEXFFFA5t8b7WVqORdq1ObGuMZ"></p>
+
+
+<!--<script>-->
+<!--    async function getImageUrlAndDisplay() {-->
+<!--        const fileId = document.getElementById('fileId').value.trim();-->
+<!--        const url = `http://localhost:8080/proxy/${fileId}`;-->
+
+<!--        try {-->
+<!--            const response = await fetch(url);-->
+<!--            if (response.ok) {-->
+<!--                const blob = await response.blob();-->
+<!--                const objectURL = URL.createObjectURL(blob);-->
+<!--                document.getElementById('displayedImage').src = objectURL;-->
+<!--            } else {-->
+<!--                throw new Error('Не удалось получить изображение.');-->
+<!--            }-->
+<!--        } catch (error) {-->
+<!--            console.error('Ошибка при получении изображения:', error);-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<!--<script>-->
+<!--    async function extractFileIdFromUrl(url) {-->
+<!--    const driver = await new WebDriver.ChromeDriver();-->
+<!--    try {-->
+<!--        await driver.navigateTo(url);-->
+<!--        await driver.wait(10000);-->
+<!--        const fileIdField = await driver.findElement(By.id("fileId"));-->
+<!--        const fileId = await fileIdField.getAttribute("value");-->
+<!--        return fileId;-->
+<!--    } finally {-->
+<!--        await driver.quit();-->
+<!--    }-->
+<!--}-->
+
+<!--let url = "https://drive.google.com/uc?export=view&id=1rX3qTEzEXFFFA5t8b7WVqORdq1ObGuMZ";-->
+<!--extractFileIdFromUrl(url).then((fileId) => {-->
+<!--    console.log(fileId);-->
+<!--}).catch(err => {-->
+<!--    console.error(err.message);-->
+<!--};)-->
+<!--</script>-->
+
+<div class="cl_mg">
+    <form action="cloud_message/post" method="post" enctype="multipart/form-data">
+        <label>
+            <input type="text" class="navbar_x" name="cloudName">
+        </label>
+    </form>
+
+    <form action="#">
+        <div class="response_window">
+            <label>
+                <textarea data-th-text="${test2}"></textarea>
+            </label>
+        </div>
+    </form>
+</div>
+
+
+<!--<div class="xp" id="images-container"></div>-->
+
+<div class="xo">
+    <form action="http://localhost:8081/proxy/1GHWlihA_pabY9D-AYvMf0bqE6i7ZLi__">
+        <button class="buttonQWE" type="submit">
+            <img src="http://localhost:8081/proxy/1UaBIbUNDXMrhT8cN2FH3alZayGIOVTl_" width="340" height="200">
+        </button>
+    </form>
+</div>
+
+<!--<script>-->
+<!--    // Массив объектов, представляющих строки из базы данных-->
+<!--    const imagesData = [-->
+
+<!--        { id: 2, cloud_id: "1GHWlihA_pabY9D-AYvMf0bqE6i7ZLi__", cloud_name: "Google Drive" },-->
+<!--        { id: 3, cloud_id: "1UaBIbUNDXMrhT8cN2FH3alZayGIOVTl_", cloud_name: "Google Drive" }-->
+<!--    ];-->
+
+<!--    const proxyUrl = 'http://localhost:8081/proxy/';-->
+
+<!--    imagesData.forEach(image => {-->
+<!--        const img = new Image();-->
+<!--        img.onload = () => {-->
+<!--            document.getElementById('images-container').appendChild(img);-->
+<!--        };-->
+<!--        img.onerror = () => {-->
+<!--            console.error(`Ошибка загрузки изображения с id ${image.id}`);-->
+<!--        };-->
+<!--        img.src = `${proxyUrl}${image.cloud_id}`;-->
+<!--    });-->
+<!--</script>-->
+
+</body>
+</html>

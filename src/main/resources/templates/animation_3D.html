@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width: device-width, initial-scale=1.0">
+    <title>Animation_3D</title>
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Mouse.png">
+</head>
+
+<style>
+    .container {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* <!-- Using the custom property `--i` to calculate the animation duration. --> */
+li {
+  animation-name: bubbly;
+  animation-duration: calc(var(--i) * 1s);
+   animation-fill-mode:forwards;
+  animation-timing-function:ease-in-out
+}
+
+/* keyframes */
+@keyframes bubbly {
+  0% {
+    opacity: 0;
+    /* transform: translateY(-100px); */
+    transform: scale(0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0); */
+    transform: scale(1);
+  }
+}
+</style>
+
+<body>
+
+<ul class="container">
+    <li style="--i:1">A</li>
+    <li style="--i:1.3">N</li>
+    <li style="--i:1.6">I</li>
+    <li style="--i:1.9">M</li>
+    <li style="--i:2.2">A</li>
+    <li style="--i:2.5">T</li>
+    <li style="--i:2.8">I</li>
+    <li style="--i:3.1">O</li>
+    <li style="--i:3.4">N</li>
+</ul>
+
+
+<style>
+    body {
+    height: 100vh;
+    background-image: url("https://images.hdqwalls.com/download/kings-of-glory-7l-1920x1080.jpg");
+    cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo26.cur), auto;
+<!--    cursor: url("images/cursor.cur"), auto;-->
+    }
+    a {
+    cursor: url("images/cursor.cur"), auto;
+    }
+
+    button {
+    cursor: url("images/cursor.cur"), auto;
+    }
+
+    .cnvs {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+
+    }
+    .curious {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    }
+    .ring {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+
+    }
+    a {
+    text-decoration: none;
+    }
+
+    .katana {
+    position: fixed;
+    bottom: 0;
+    }
+
+<!--    .nz {-->
+<!--    position: fixed;-->
+<!--    bottom: 0;-->
+<!--    }-->
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em 1em;
+      outline: none;
+      border-radius: 3px;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+      opacity: 0.7;
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+      border-radius: 3px;
+    }
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+      border-radius: 3px;
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
+    }
+
+        .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+
+</style>
+
+<img src="https://images.wallpaperscraft.ru/image/single/kosmonavt_skafandr_illiuminator_168453_1920x1080.jpg" width="250" height="150">
+
+<div class="curious"></div>
+
+<div class="cnvs"></div>
+
+<style>
+    .ipm {
+    background-image: url(https://masterpiecer-images.s3.yandex.net/c4418ed186f311ee83c6da477c0f1ee2:upscaled);
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    opacity: 0.7;
+    }
+
+    .ipm:hover {
+    background-image: url(https://99px.ru/sstorage/1/2021/01/image_11001211032184182792.gif);
+    }
+
+</style>
+
+<style>
+    .opm {
+    background-image: url(https://san2.ru/images/avatars/fantasy/witches/witch-girl-03.gif);
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    }
+    .opm:hover {
+    background-image: url(https://san2.ru/images/avatars/fantasy/witches/witch-girl-03.gif);
+    position: center;
+    }
+
+    .tpm {
+    background-image: url(https://99px.ru/sstorage/1/2015/10/image_12910151428358755576.gif);
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    }
+    .tpm:hover {
+    background-image: url(https://99px.ru/sstorage/1/2015/10/image_12910151428358755576.gif);
+    }
+</style>
+
+
+<div class="ring">
+    <form action="home">
+        <button class="ipm" type="submit"></button>
+    </form>
+
+    <form action="#">
+        <button class="opm" type="submit"></button>
+    </form>
+
+    <form action="page_three">
+        <button class="tpm" type="submit"></button>
+    </form>
+</div>
+
+
+<div class="katana">
+    <div class="pagination">
+        <a href="home">&laquo;</a>
+        <a href="home">1</a>
+        <a class="active" href="animation_3D">2</a>
+        <a href="page_three">3</a>
+        <a href="page_four">4</a>
+        <a href="page_three">&raquo;</a>
+    </div>
+</div>
+
+</body>
+</html>
