@@ -34,8 +34,6 @@ public class Image {
     @Lob
     private byte[] imageData;
 
-//    private String url;
-
     private LocalDateTime dateOfCreated;
 
 
@@ -44,11 +42,6 @@ public class Image {
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
-
-
-    private String description;
-
-
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private ImageStat imageStat;
@@ -63,16 +56,6 @@ public class Image {
 
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
-    }
-
-
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDateTime getDateOfCreated() {

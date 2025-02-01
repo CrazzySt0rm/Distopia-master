@@ -70,7 +70,6 @@ public class ImageStatController {
                     dbImage.getName(),
                     fileDownloadUri,
                     dbImage.getContentType(),
-                    dbImage.getDescription(),
                     dbImage.getSize(),
                     dbImage.getDateOfCreated(),
                     dbImage.getImageData().length);

@@ -13,6 +13,12 @@
     background: linear-gradient(to right, #757f9a, #d7dde8);
     }
 
+    h1 {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    }
+
     .buttonCustom {
     background: linear-gradient(to right, #403b4a, #e7e9bb);
     box-shadow: (0, 0, 0, 3px);
@@ -107,6 +113,15 @@
     transform: 25deg;
     }
 
+    .response_window {
+    margin-top: 20px;
+    }
+
+    .navbar_x {
+    width: 200px;
+
+    }
+
 
 
 
@@ -115,6 +130,14 @@
     display: flex;
     justify-content: center;
     }
+</style>
+
+<style>
+    textarea {
+    width: 200px;
+    height: 50px;
+    }
+
 </style>
 
 <body>
@@ -139,15 +162,15 @@
 
 </div>
 
-<div class="upl">
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label>Файл</label>
-        <input type="file" name="file"><br><br>
-        <label>Название</label>
-        <input type="text" name="name" placeholder="name"><br><br>
-        <label>Описание</label>
-        <input type="text" name="description" placeholder="description"><br><br>
-        <input type="submit" class="buttonCustom" value="upload">
+<!--<div class="upl">-->
+<!--    <form action="/uploadN" method="post" enctype="multipart/form-data">-->
+<!--        <label>Файл</label>-->
+<!--        <input type="file" name="fileX"><br><br>-->
+<!--        <label>Название</label>-->
+<!--        <input type="text" name="fileName" placeholder="name"><br><br>-->
+<!--        <label>Описание</label>-->
+<!--        <input type="text" name="description" placeholder="description"><br><br>-->
+<!--        <input type="submit" class="buttonCustom" value="upload">-->
 
 <!--        <input type="text" name="name" placeholder="name">-->
 <!--        <input type="text" name="name" placeholder="name">-->
@@ -162,18 +185,18 @@
 <!--    <img th:src="@{'/images/' + ${1}}" alt="Пример изображения">-->
 
     <div class="xz">
-        <form th:action="@{'/images/' + ${1}}">
+        <form th:action="@{'/images/' + ${152}}">
             <button class="buttonQWE" type="submit">
-                <img th:src="@{'/images/' + ${1}}" alt="Пример изображения" width="340" height="200">
+                <img th:src="@{'/images/' + ${152}}" alt="Пример изображения" width="340" height="200">
             </button>
         </form>
 
     </div>
 
     <div class="xy">
-        <form th:action="@{'/images/' + ${2}}">
+        <form th:action="@{'/images/' + ${153}}">
             <button class="buttonQWE" type="submit">
-                <img th:src="@{'/images/' + ${2}}" alt="Пример изображения" width="340" height="200">
+                <img th:src="@{'/images/' + ${153}}" alt="Пример изображения" width="340" height="200">
             </button>
         </form>
 
@@ -193,7 +216,7 @@
         <input type="text" name="name" placeholder="name"><br><br>
         <label>Описание</label>
         <input type="text" name="description" placeholder="description"><br><br>
-        <input type="submit" class="buttonCustom" value="upload">
+        <input type="submit" class="buttonCustom" value="upload" id="addItem">
 
         <!--        <input type="text" name="name" placeholder="name">-->
         <!--        <input type="text" name="name" placeholder="name">-->
@@ -202,6 +225,12 @@
 
     </form>
 </div>
+
+<script>
+    function addItem() {
+    alert("Изображение успешно сохранено в базу данных")
+    }
+</script>
 
 
 <!--<script>-->
@@ -317,7 +346,7 @@
     <form action="#">
         <div class="response_window">
             <label>
-                <textarea data-th-text="${test2}"></textarea>
+                <textarea data-th-text="${test2}" id="t_a"></textarea>
             </label>
         </div>
     </form>
@@ -355,6 +384,13 @@
 <!--        img.src = `${proxyUrl}${image.cloud_id}`;-->
 <!--    });-->
 <!--</script>-->
+
+
+<div class="">
+    <img src="">
+</div>
+
+
 
 </body>
 </html>
