@@ -21,4 +21,10 @@ public class Cloud {
     private String cloudId;
 
     private String cloudName;
+
+    private String driveLink;
+
+    private String mimeType;
+
+
 }

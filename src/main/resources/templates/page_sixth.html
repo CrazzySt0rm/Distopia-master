@@ -16,7 +16,7 @@
     h1 {
     display: flex;
     justify-content: center;
-    color: gray;
+<!--    color: gray;-->
     }
 
     .buttonCustom {
@@ -90,8 +90,35 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-
     }
+
+    .cl_mg {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: pink;
+    width: 400px;
+    }
+
+    .cl_mn {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: pink;
+    width: 400px;
+    }
+
+    .gi {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: pink;
+    width: 400px;
+    }
+
 
     .buttonQWE{
     background: #222222;
@@ -337,11 +364,16 @@
 <!--</script>-->
 
 <div class="cl_mg">
-    <form action="cloud_message/post" method="post" enctype="multipart/form-data">
+
+    <h2>Сохранение ссылки в базу данных</h2><br>
+    <form action="/cloud_message/post" method="post" enctype="multipart/form-data">
         <label>
+            Ссылка на файл в Google Drive:
             <input type="text" class="navbar_x" name="cloudName">
         </label>
+        <button type="submit">Отправить</button>
     </form>
+
 
     <form action="#">
         <div class="response_window">
@@ -351,6 +383,34 @@
         </div>
     </form>
 </div>
+
+<div class="gi">
+    <h2>Получение ID файла Google Drive</h2><br>
+
+    <label for="cloud-name">Введите полный публичный URL файла:</label><br>
+    <input type="text" id="cloud-name" placeholder="https://drive.google.com/file/d/1EazFVTVzs5_hXZL-dhTe2-Y3D6CmP8BK/view?usp=sharing" /><br>
+    <button onclick="getDriveFileId()">Получить ID</button><br>
+    <label for="result-id">ID файла:</label><br>
+    <textarea id="result-id" rows="1" cols="50"></textarea>
+</div>
+
+<script>
+    function getDriveFileId() {
+        let cloudName = document.getElementById("cloud-name").value.trim();
+        let fileId = extractFileId(cloudName);
+        if (fileId) {
+            document.getElementById("result-id").value = fileId;
+        } else {
+            alert("Не удалось найти ID файла в ссылке.");
+        }
+    }
+
+    function extractFileId(cloudName) {
+        const regex = /\/file\/d\/(.*?)\//;
+        const matches = cloudName.match(regex);
+        return matches ? matches[1] : null;
+    }
+</script>
 
 
 <!--<div class="xp" id="images-container"></div>-->
@@ -390,7 +450,34 @@
     <img src="">
 </div>
 
+<div class="cl_mn">
+    <h2>Преобразование ссылки Google Drive</h2>
 
+    <label for="public-link">Введите публичную ссылку:</label><br />
+    <input type="text" id="public-link" placeholder="https://drive.google.com/file/d/[FILE_ID]/view?usp=sharing" /><br />
+    <button onclick="convertToDirectLink()">Преобразовать</button><br />
+    <label for="result-link">Прямая ссылка для скачивания:</label><br />
+    <textarea id="result-link" rows="4" cols="50"></textarea>
+</div>
+
+<script>
+    function convertToDirectLink() {
+        let publicUrl = document.getElementById("public-link").value.trim();
+        let fileId = extractFileId(publicUrl);
+        if (fileId) {
+            let directDownloadUrl = `https://drive.google.com/uc?id=${fileId}`;
+            document.getElementById("result-link").value = directDownloadUrl;
+        } else {
+            alert("Не удалось найти ID файла в ссылке.");
+        }
+    }
+
+    function extractFileId(publicUrl) {
+        const regex = /\/file\/d\/(.*?)\//;
+        const matches = publicUrl.match(regex);
+        return matches ? matches[1] : null;
+    }
+</script>
 
 </body>
 </html>

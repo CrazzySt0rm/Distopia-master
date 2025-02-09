@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Page seven</title>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+
+<style>
+  body {
+  background-size: cover;
+  background: url(https://content-studio.sberdevices.ru/ai-agent/56e1f207-a0f7-464f-adda-4cf8673951ed/d68008bf-5c4e-499b-aaec-5d40651f2024.jpg);
+  }
+  h1 {
+<!--  display: flex;-->
+<!--  justify-content: center;-->
+
+  }
+  .gt {
+  margin-left: 100px;
+  background: #fdfae5;
+  width: 400px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  }
+
+  .card {
+  margin-top: 20px;
+  margin-left: 100px;
+  background: white;
+  width: 400px;
+  border-radius: 10px;
+
+
+  }
+
+
+  .boom {
+  margin-top: 200px;
+  background: gray;
+<!--  width: 400px;-->
+  display: flex;
+  justify-content: center;
+  max-width: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fdfae5;
+    border: 2px dashed #d4aa70;
+    border-radius: 10px;
+
+  }
+
+
+
+ form {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fdfae5;
+    border: 2px dashed #d4aa70;
+    border-radius: 10px;
+}
+
+input,
+textarea,
+select {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    background-color: #fffce1;
+    border: 2px solid #d4aa70;
+    border-radius: 5px;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #c89653;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #c89653;
+    color: #fffce1;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b58346;
+}
+</style>
+
+<script>
+  function addItem() {
+      alert("Ссылка успешно загружена в базу.");
+  }
+</script>
+
+<body>
+
+<div class="gt">
+    <h1>Загружать данные здесь!</h1>
+</div>
+
+<div class="card">
+    <div class="boom">
+        <!--  <form action="cloud_message/post" method="post" enctype="multipart/form-data">-->
+        <!--    <label>-->
+        <!--      <input type="text" name="cloudName"><br><br>-->
+        <!--    </label>-->
+
+        <!--    <input type="submit" value="отправить" onclick="addItem()">-->
+        <!--  </form>-->
+
+        <!--    <form action="http://localhost:8081/15ieqfJjJ30Cw0Nm8cOql44wHTuf-_kzn">-->
+        <!--        <button class="buttonQWE" type="submit">-->
+        <!--            <embed src="http://localhost:8081/15ieqfJjJ30Cw0Nm8cOql44wHTuf-_kzn" width="340px" height="200px" />-->
+        <!--        </button>-->
+        <!--    </form>-->
+
+
+        <h1>Cloud Storage</h1>
+
+        <!-- Форма для загрузки файла -->
+        <form id="uploadForm">
+<!--            <label for="file">Выберите файл:</label>-->
+            <input type="file" id="file" name="file"><br><br>
+            <button type="submit">Загрузить</button>
+        </form>
+
+        <!-- Кнопка для открытия существующей ссылки -->
+        <a href="#" onclick="openLink('https://drive.google.com/file/d/1qZWZsyeiSXP073SKMFJyokVzSsOcwdbP/view?usp=sharing')">Открыть ссылку</a>
+
+
+    </div>
+</div>
+
+<h1>View File from Google Drive</h1>
+<!--<form action="/files" method="GET">-->
+<!--    <label for="cloudId">Enter File ID:</label>-->
+<!--    <input type="text" id="cloudId" name="cloudId">-->
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+
+<div id="result"></div>
+<!--<script>-->
+<!--    document.querySelector('form').addEventListener('submit', function(event) {-->
+<!--    event.preventDefault();-->
+<!--    const cloudId = document.getElementById('cloudId').value;-->
+<!--    window.location.href = '/api/clouds/' + encodeURIComponent(cloudId);-->
+<!--});-->
+<!--</script>-->
+
+<!--<h1>Download File from Google Drive</h1>-->
+<!--<form action="/api/clouds" method="GET">-->
+<!--    <label for="cloudId">Enter File ID:</label>-->
+<!--    <input type="text" id="cloudId" name="cloudId">-->
+<!--    <button type="submit">Download</button>-->
+<!--</form>-->
+
+<h1>Открыть файл из Google Drive</h1>
+<p>Введите идентификатор файла из Google Drive.</p>
+<input type="text" id="cloudId" placeholder="Введите идентификатор файла">
+<button onclick="openFile()">Открыть файл</button>
+<script>
+    async function openFile() {
+        const cloudId = document.getElementById('cloudId').value.trim();
+        if (cloudId === '') {
+            alert('Необходимо ввести идентификатор файла.');
+            return;
+        }
+        try {
+            const response = await fetch(`/api/clouds/${encodeURIComponent(cloudId)}`);
+            if (!response.ok) {
+                throw new Error(`Не удалось получить файл с Google Drive: ${response.status}`);
+            }
+            const blob = await response.blob();
+            const type = response.headers.get('Content-Type');
+            const objectURL = URL.createObjectURL(blob, {type: type}, {end: () => URL.revokeObjectURL(objectURL)});
+            if (type.includes('pdf')) {
+                window.open(objectURL, '_blank');
+            } else {
+                const img = new Image();
+                img.src = objectURL;
+                img.alt = `Открывшийся файл из Google Drive`;
+                document.body.appendChild(img);
+            }
+        } catch (error) {
+            console.error(`Не удалось открыть файл из Google Drive: ${error.message}`);
+        }
+    }
+</script>
+
+</body>
+</html>

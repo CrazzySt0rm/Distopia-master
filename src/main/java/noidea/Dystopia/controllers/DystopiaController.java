@@ -88,50 +88,14 @@ public class DystopiaController {
         model.addAttribute("test2", dbReader.getMSG());
         return "page_sixth";
     }
+
+    @GetMapping("/page_seven")
+    public String getPageSeven(Model model) {
+        model.addAttribute("test2", dbReader.getMSG());
+        return "page_seven";
+
+
+    }
 }
 
-
-//    @GetMapping(value = "/image/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
-//    public String showImage(@PathVariable("id") int id, Model model) {
-//
-//        try {
-//
-//            String URL = "jdbc:postgresql://localhost:5432/postgres";
-//            String USER = "postgres";
-//            String PASSWORD = "12345";
-//
-//
-//            String query = "SELECT image_data FROM images_t WHERE id = ?";
-//
-//            try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-//                 PreparedStatement pstmt = conn.prepareStatement(query)) {
-//                pstmt.setInt(1, id);
-//
-//                try (ResultSet rs = pstmt.executeQuery()) {
-//                    if (rs.next()) {
-//                        byte[] imgData = rs.getBytes("image_data");
-//
-//                        if (imgData == null || imgData.length == 0) {
-//                            return "error_page";
-//                        }
-//                        String imageData = Base64.getEncoder().encodeToString(imgData);
-//                        if (imageData != null) {
-//                            model.addAttribute("imageData", imageData);
-//                            return "page_four";
-//
-//
-//                        }
-//                    }
-//                }
-//                return "error_page";
-//            }
-//
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return "error_page";
-//        }
-//
-//    }
-//}
 
