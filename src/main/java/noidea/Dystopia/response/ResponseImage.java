@@ -1,7 +1,5 @@
 package noidea.Dystopia.response;
 
-import org.springframework.http.ResponseEntity;
-
 import java.time.LocalDateTime;
 
 public class ResponseImage {
@@ -10,9 +8,6 @@ public class ResponseImage {
     private String url;
     private String contentType;
     private long size;
-
-
-
 
 
     private LocalDateTime dateOfCreated;

@@ -2,7 +2,7 @@ package noidea.Dystopia.services;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+
 import noidea.Dystopia.models.Image;
 import noidea.Dystopia.models.ImageStat;
 import noidea.Dystopia.repositories.ImageRepository;
@@ -94,23 +94,4 @@ public class ImageService {
     }
 }
 
-//    public byte[] getImageById(Long id) {
-//        ImageStat imageStat = imageStatRepository.findById(id)
-//                .orElseThrow(() -> new RuntimeException("Image not found"));
-//
-//        // Логируем количество изображений
-//        log.debug("Found {} images for ImageStat with ID {}", imageStat.getImages().size(), id);
-//
-//        Optional<Image> previewImage = imageStat.getImages()
-//                .stream()
-//                .filter(img -> img.isPreviewImage())
-//                .findFirst();
-//
-//        if (previewImage.isPresent()) {
-//            return previewImage.get().getImageData();
-//        } else {
-//            log.error("No preview image found for ImageStat with ID {}", id);
-//            throw new RuntimeException("Preview image not found");
-//        }
-//    }
 

@@ -1,9 +1,9 @@
 package noidea.Dystopia.services;
 
 import jakarta.mail.MessagingException;import jakarta.mail.internet.MimeMessage;
-import lombok.AllArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
-import noidea.Dystopia.models.Dystopia;
+
 import noidea.Dystopia.repositories.DystopiaRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;import org.springframework.mail.javamail.JavaMailSender;

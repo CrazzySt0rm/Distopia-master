@@ -149,9 +149,6 @@
 
     }
 
-
-
-
     .img_from_cloud {
     margin-top: 20px;
     display: flex;
@@ -188,21 +185,6 @@
 
 
 </div>
-
-<!--<div class="upl">-->
-<!--    <form action="/uploadN" method="post" enctype="multipart/form-data">-->
-<!--        <label>Файл</label>-->
-<!--        <input type="file" name="fileX"><br><br>-->
-<!--        <label>Название</label>-->
-<!--        <input type="text" name="fileName" placeholder="name"><br><br>-->
-<!--        <label>Описание</label>-->
-<!--        <input type="text" name="description" placeholder="description"><br><br>-->
-<!--        <input type="submit" class="buttonCustom" value="upload">-->
-
-<!--        <input type="text" name="name" placeholder="name">-->
-<!--        <input type="text" name="name" placeholder="name">-->
-<!--        <input type="text" name="name" placeholder="name">-->
-<!--        <input type="text" name="name" placeholder="name">-->
 
     </form>
 </div>
@@ -245,10 +227,6 @@
         <input type="text" name="description" placeholder="description"><br><br>
         <input type="submit" class="buttonCustom" value="upload" id="addItem">
 
-        <!--        <input type="text" name="name" placeholder="name">-->
-        <!--        <input type="text" name="name" placeholder="name">-->
-        <!--        <input type="text" name="name" placeholder="name">-->
-        <!--        <input type="text" name="name" placeholder="name">-->
 
     </form>
 </div>
@@ -259,109 +237,8 @@
     }
 </script>
 
-
-<!--<script>-->
-<!--    function updateImage() {-->
-<!--            // Получаем строку из textarea-->
-<!--            let inputString = document.getElementById('inputData').value;-->
-<!--            console.log("Input string:", inputString);-->
-
-<!--            // Удаляем все лишние пробелы и переносы строк-->
-<!--            inputString = inputString.replace(/[\n\r]+/g, ' ').trim(); // заменяем переносы строк на пробелы и убираем лишние пробелы-->
-<!--            console.log("Trimmed string:", inputString);-->
-
-<!--            // Разделяем строку на части по пробелам-->
-<!--            let parts = inputString.split(/\s+/); // Убираем лишние пробелы и делим по одному или нескольким пробелам-->
-<!--            console.log("Parts array:", parts);-->
-
-<!--            // Проверяем, что вторая часть действительно существует-->
-<!--            if (parts.length >= 2 && parts[1]) {-->
-<!--                let imageURL = parts[1];-->
-<!--                console.log("Extracted URL:", imageURL);-->
-
-<!--                // Проверяем, что URL начинается с http:// или https://-->
-<!--                if (!imageURL.startsWith('http://') && !imageURL.startsWith('https://')) {-->
-<!--                    alert("Неверный формат URL. Пожалуйста, введите полный URL, начиная с http:// или https://.");-->
-<!--                    return;-->
-<!--                }-->
-
-<!--                // Пробуем загрузить изображение-->
-<!--                let testImg = new Image();-->
-<!--                testImg.onload = function() {-->
-<!--                    // Если изображение успешно загрузилось, обновляем src основного тега img-->
-<!--                    document.getElementById('cloudImage').src = imageURL;-->
-<!--                };-->
-<!--                testImg.onerror = function() {-->
-<!--                    alert("Извините, произошла ошибка при загрузке изображения. Проверьте URL.");-->
-<!--                };-->
-<!--                testImg.src = imageURL;-->
-<!--            } else {-->
-<!--                alert("Неверный формат ввода. Пожалуйста, введите данные в формате 'номер URL'.");-->
-<!--            }-->
-<!--        }-->
-<!--</script>-->
-
-<!--<div class="xp">-->
-<!--    <form action="">-->
-<!--        <button class="buttonQWE" type="submit">-->
-<!--            <img src="" width="640" height="480">-->
-<!--        </button>-->
-<!--    </form>-->
-<!--    -->
-<!--    <form action="">-->
-<!--        <button class="buttonQWE" type="submit">-->
-<!--            <img src="" width="640" height="480">-->
-<!--        </button>-->
-<!--    </form>-->
-
-<!--</div>-->
-
-
 <h1>Вставка изображения</h1>
 <p>ID файла: <input type="text" id="fileId" value="1rX3qTEzEXFFFA5t8b7WVqORdq1ObGuMZ"></p>
-
-
-<!--<script>-->
-<!--    async function getImageUrlAndDisplay() {-->
-<!--        const fileId = document.getElementById('fileId').value.trim();-->
-<!--        const url = `http://localhost:8080/proxy/${fileId}`;-->
-
-<!--        try {-->
-<!--            const response = await fetch(url);-->
-<!--            if (response.ok) {-->
-<!--                const blob = await response.blob();-->
-<!--                const objectURL = URL.createObjectURL(blob);-->
-<!--                document.getElementById('displayedImage').src = objectURL;-->
-<!--            } else {-->
-<!--                throw new Error('Не удалось получить изображение.');-->
-<!--            }-->
-<!--        } catch (error) {-->
-<!--            console.error('Ошибка при получении изображения:', error);-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
-
-<!--<script>-->
-<!--    async function extractFileIdFromUrl(url) {-->
-<!--    const driver = await new WebDriver.ChromeDriver();-->
-<!--    try {-->
-<!--        await driver.navigateTo(url);-->
-<!--        await driver.wait(10000);-->
-<!--        const fileIdField = await driver.findElement(By.id("fileId"));-->
-<!--        const fileId = await fileIdField.getAttribute("value");-->
-<!--        return fileId;-->
-<!--    } finally {-->
-<!--        await driver.quit();-->
-<!--    }-->
-<!--}-->
-
-<!--let url = "https://drive.google.com/uc?export=view&id=1rX3qTEzEXFFFA5t8b7WVqORdq1ObGuMZ";-->
-<!--extractFileIdFromUrl(url).then((fileId) => {-->
-<!--    console.log(fileId);-->
-<!--}).catch(err => {-->
-<!--    console.error(err.message);-->
-<!--};)-->
-<!--</script>-->
 
 <div class="cl_mg">
 

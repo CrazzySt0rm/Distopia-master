@@ -4,21 +4,18 @@ package noidea.Dystopia.controllers;
 import lombok.AllArgsConstructor;
 import noidea.Dystopia.db_reader.DbReader;
 import noidea.Dystopia.models.Dystopia;
-import noidea.Dystopia.services.EmailService;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 
@@ -54,7 +51,6 @@ public class DystopiaController {
         humans.add("Eric Foxy");
         humans.add("Lee Si Cin");
         model.addAttribute("test", dbReader.getMSG());
-//        model.addAttribute("image", dbReader.getIMG());
 
         model.addAttribute("xyz", humans);
         model.addAttribute("title", "imperium");
@@ -93,7 +89,6 @@ public class DystopiaController {
     public String getPageSeven(Model model) {
         model.addAttribute("test2", dbReader.getMSG());
         return "page_seven";
-
 
     }
 }
