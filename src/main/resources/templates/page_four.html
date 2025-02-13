@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width: device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>Fantasy</title>
     <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Feather.png">
 </head>
@@ -31,12 +31,6 @@
 <!--    </div>-->
 
 
-
-
-
-
-
-
 <style>
 
     body {
@@ -50,14 +44,9 @@
 <!--    cursor: url("images/cursor.cur"), auto;-->
     }
 
-
     button {
 <!--    cursor: url("images/cursor.cur"), auto;-->
     }
-
-
-
-
 
     .mail {
     background: url(https://trikky.ru/wp-content/blogs.dir/1/files/2020/06/08/image-12.jpeg);
@@ -74,7 +63,6 @@
     margin: auto;
     margin-top: 20px;
 
-
     border-radius: 50%;
     }
 
@@ -82,7 +70,6 @@
     margin-top: 50%;
     margin: auto;
     }
-
 
     h1 {padding: 40px; text-align: center; font-size: 1.5em;}
 
@@ -316,7 +303,30 @@
     justify-content: right;
     }
 
+    .s_a {
+    margin-top: 20px;
+    display: flex; justify-content: center;
+    background: linear-gradient(90deg, #020203,#66f0f9,#000000);
+    width: 400px;
+    height: 180px;
+    padding-top: 40px;
+    border-radius: 10px;
+    }
 
+    .a_bu {
+    margin-top: 20px;
+
+    }
+
+    .voice {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #020203,#66f0f9,#000000);
+    width: 400px;
+    height: 150px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    }
 
     .klik {
     margin-top: 20px;
@@ -333,15 +343,12 @@
 
     }
 
-
     .time_form_x {
 
     background: linear-gradient(to right, #000000, #434343);;
     border-radius: 3px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 140px;
-
-
 
     overflow: hidden;
     text-align: center;
@@ -352,11 +359,7 @@
     flex-direction: column;
     margin: auto;
 
-
     }
-
-
-
 
   .custom-btn {
     margin-top: 40px;
@@ -445,7 +448,6 @@
     -moz-transform: rotateX(-90deg);
     transform: rotateX(-90deg);
   }
-
 
 
 </style>
@@ -583,28 +585,90 @@
 <!--</div>-->
 
 <div class="window">
-    <input type="button" class="btn-12" value="Напоминание" onclick="addItem();"/>
+    <!--    <input type="button" id="qweButton" class="btn-12" value="Напоминание" onclick="qwe()"/>-->
+    <!-- Несколько кнопок с разными ID -->
+    <input type="button" id="qweButton1" class="btn-12" value="привет" data-audio-id="1">
+    <input type="button" id="qweButton2" class="btn-12" value="хорошо" data-audio-id="4">
+    <input type="button" id="qweButton3" class="btn-12" value="напоминание" data-audio-id="16">
+
+
+
+</div>
+
+<div class="s_a">
+    <form id="uploadForm" action="audio/create" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="audioID" value="10">
+        <input type="file" name="file"><br><br>
+        <input type="text" name="audioTitle" value="title"><br><br>
+        <input type="text" name="audioDescription" value="description"><br><br>
+        <button type="submit" class="button28">отправить</button>
+    </form>
 </div>
 
 <div class="dl_w">
-    <h1>Изображение из базы данных:</h1>
-    <h1>Image Display</h1>
-    <!-- Здесь будет отображаться изображение -->
-    <img th:src="'data:image/jpeg;base64,' + ${imageData}" alt="Image" />
+    <h1>Музыка</h1>
 
+    <h1>Проверка воспроизведения аудиофайла</h1>
 
-    <a href="#" class="button28">Скачать</a>
+    <div class="a_bu">
+        <button class="button28" onclick="document.getElementById('audioPlayer').play()">Воспроизведение</button>
+        <button class="button28" onclick="document.getElementById('audioPlayer').pause()">Пауза</button>
+        <button class="button28"
+                onclick="audio=document.getElementById('audioPlayer'); audio.currentTime=0; audio.pause(); ">
+            Сначала
+        </button>
+        <button class="button28" onclick="document.getElementById('audioPlayer').volume+=0.1">Громкость +</button>
+        <button class="button28" onclick="document.getElementById('audioPlayer').volume-=0.1">Громкость -</button>
+    </div>
+
+    <div class="voice">
+
+        <!-- Поле для ввода ID аудиофайла -->
+        <label for="audioIdInput">ID аудиофайла:</label>
+        <input type="number" id="audioIdInput" placeholder="Введите ID аудиофайла"><br><br>
+
+        <!-- Кнопка для запуска проверки -->
+        <button onclick="playAudio()">Воспроизвести аудио</button>
+        <br><br>
+
+        <!-- Аудиоплеер -->
+        <audio id="audioPlayer" controls></audio>
+    </div>
 
 
 </div>
 
+<script>
+    function playAudio() {
+        const audioId = document.getElementById('audioIdInput').value; // Получаем введенное значение
+        if (!audioId) {
+            alert('Пожалуйста, введите ID аудиофайла.');
+            return;
+        }
+
+        fetch(`/audio/listen/${audioId}`)
+            .then(response => response.arrayBuffer())
+            .then(data => {
+                const blob = new Blob([data], { type: 'audio/mp3' });
+                const url = window.URL.createObjectURL(blob);
+                document.getElementById('audioPlayer').src = url;
+                document.getElementById('audioPlayer').load();
+            })
+            .catch(error => console.error('Ошибка при загрузке аудиофайла:', error));
+    }
+</script>
+
+<style>
+    audio::-webkit-media-controls {
+<!--    display: none;-->
+    }
+</style>
 
 <div class="card">
     <menu>
         <details>
 
             <form action="/image_stat/create" method="post" enctype="multipart/form-data">
-
 
 
                 <h1 class="app-title">
@@ -647,12 +711,14 @@
 </div>
 
 
-
 <!--____________________________________________________________________-->
 
 <div class="klik" id='klik' onclick='klik()'>
+    <!--    <canvas id='canvas'-->
+    <!--            style='background-image: url(https://i.pinimg.com/originals/18/c8/3c/18c83c73c4fb0cc28275b2eca5bee4d3.jpg)'></canvas>-->
+    <!--    <br/>-->
     <canvas id='canvas'
-            style='background-image: url(https://i.pinimg.com/originals/18/c8/3c/18c83c73c4fb0cc28275b2eca5bee4d3.jpg)'></canvas>
+            style='background-image: url(https://c.tenor.com/tVOcqeSTs0YAAAAd/tenor.gif)'></canvas>
     <br/>
 
 </div>
@@ -703,7 +769,8 @@
     var ctx = canvas.getContext("2d");
 
     var character = new Image();
-    character.src = "https://mnogoblog.ru/wp-content/uploads/2018/06/girl.png";
+<!--    character.src = "https://mnogoblog.ru/wp-content/uploads/2018/06/girl.png";-->
+<!--    character.src = "https://media1.tenor.com/m/tVOcqeSTs0YAAAAd/anime-elmesia.gif";-->
 
     function updateFrame(){
         curFrame = ++curFrame % frameCount;
@@ -770,9 +837,33 @@
     <details>
         <div class="hw06">
 
+            <h1>Прослушивание аудиофайлов</h1>
+
+            <!-- Кнопка для выбора аудиофайла -->
+            <button onclick="listenToAudio()">Выбрать аудиофайл</button>
+
+            <!-- Элемент для воспроизведения аудио -->
+            <audio id="player" controls></audio>
+
         </div>
     </details>
 </menu>
+
+<script>
+    function listenToAudio() {
+        let id = prompt("Введите ID аудиофайла:", "");
+
+        if (id !== null && id.trim().length > 0) {
+            fetch(`/audio/listen/${encodeURIComponent(id)}`)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    document.getElementById('player').src = url;
+                })
+                .catch(error => console.error('Ошибка:', error));
+        }
+    }
+</script>
 
 <menu>
     <details>
@@ -782,6 +873,56 @@
     </details>
 </menu>
 
+<script>
+
+    // Массив объектов, где ключ - это ID кнопки, значение - ID аудиофайла
+        const audioMap = {
+            'qweButton1': 'audio1',
+            'qweButton2': 'audio2',
+            'qweButton3': 'audio3'
+        };
+
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Отменяем стандартную отправку формы
+
+    const formData = new FormData(this);
+    const audioID = formData.get('audioID'); // Получаем ID аудиофайла из формы
+
+    // Запрашиваем аудиофайл по его ID
+    const response = await fetch(`/audio/listen/${audioID}`);
+    const blob = await response.blob();
+
+    // Создаем новый Audio элемент для воспроизведения
+    const audioPlayer = new Audio(URL.createObjectURL(blob));
+
+    // Начинаем воспроизведение
+    audioPlayer.play();
+
+    // Отправляем форму на сервер после начала воспроизведения
+    setTimeout(() => {
+        this.submit();
+    }, 1000); // Можно убрать таймер, если нет необходимости ждать
+});
+
+// Универсальная функция для всех кнопок
+        document.querySelectorAll('.btn-12').forEach(button => {
+    button.addEventListener('click', async function() {
+        const audioID = this.dataset.audioId; // Получаем ID аудиофайла из атрибута data-audio-id
+
+        if (!audioID) return; // Если ID не найден, ничего не делаем
+
+        // Запрашиваем аудиофайл по его ID
+        const response = await fetch(`/audio/listen/${audioID}`);
+        const blob = await response.blob();
+
+        // Создаем новый Audio элемент для воспроизведения
+        const audioPlayer = new Audio(URL.createObjectURL(blob));
+
+        // Начинаем воспроизведение
+        audioPlayer.play();
+    });
+});
+</script>
 
 <a href="http://wotpack.ru" th:text="@{one}" class="button28"></a>
 

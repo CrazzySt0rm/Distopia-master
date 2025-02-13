@@ -2,6 +2,7 @@ package noidea.Dystopia.controllers;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Value;
 import noidea.Dystopia.db_reader.DbReader;
 import noidea.Dystopia.models.Dystopia;
 
@@ -24,12 +25,6 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8081")
 public class DystopiaController {
-
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "12345";
-
 
     private final DbReader dbReader = new DbReader();
 

@@ -51,5 +51,8 @@ public class ImageStat {
         image.setImageStat(this);
         images.add(image);
     }
+
+    @OneToMany(mappedBy = "imageStat", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Audio> audios;
 }
 

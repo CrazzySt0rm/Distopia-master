@@ -1,6 +1,7 @@
 package noidea.Dystopia.controllers;
 
 import lombok.AllArgsConstructor;
+import noidea.Dystopia.models.Audio;
 import noidea.Dystopia.models.Image;
 import noidea.Dystopia.models.ImageStat;
 import noidea.Dystopia.response.ResponseImage;
