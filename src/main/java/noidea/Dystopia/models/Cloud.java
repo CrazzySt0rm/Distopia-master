@@ -14,10 +14,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Cloud {
 
+    /*
+    Стратегия генерации `IDENTITY`: Используем стратегию IDENTITY для автоматического увеличения значения поля id при добавлении новой записи.
+
+    Такое улучшение сделает вашу модель более понятной и соответствующей лучшим практикам разработки.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(unique = true)
     private String cloudId;
 
     private String cloudName;
@@ -25,6 +32,5 @@ public class Cloud {
     private String driveLink;
 
     private String mimeType;
-
 
 }

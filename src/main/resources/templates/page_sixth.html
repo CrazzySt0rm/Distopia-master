@@ -186,12 +186,12 @@
 
 </div>
 
-    </form>
+</form>
 </div>
 
 <div class="present_image">
 
-<!--    <img th:src="@{'/images/' + ${1}}" alt="Пример изображения">-->
+    <!--    <img th:src="@{'/images/' + ${1}}" alt="Пример изображения">-->
 
     <div class="xz">
         <form th:action="@{'/images/' + ${152}}">
@@ -243,12 +243,14 @@
 <div class="cl_mg">
 
     <h2>Сохранение ссылки в базу данных</h2><br>
-    <form action="/cloud_message/post" method="post" enctype="multipart/form-data">
+    <form id="myForm" action="/cloud_message/post" method="post" enctype="multipart/form-data">
         <label>
             Ссылка на файл в Google Drive:
             <input type="text" class="navbar_x" name="cloudName">
         </label>
-        <button type="submit">Отправить</button>
+        <button type="submit" data-url="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O">Отправить</button>
+<!--        <input type="button" id="qweButton1" class="btn-12" value="Отправить"-->
+<!--               data-url="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O">-->
     </form>
 
 
@@ -265,8 +267,10 @@
     <h2>Получение ID файла Google Drive</h2><br>
 
     <label for="cloud-name">Введите полный публичный URL файла:</label><br>
-    <input type="text" id="cloud-name" placeholder="https://drive.google.com/file/d/1EazFVTVzs5_hXZL-dhTe2-Y3D6CmP8BK/view?usp=sharing" /><br>
-    <button onclick="getDriveFileId()">Получить ID</button><br>
+    <input type="text" id="cloud-name"
+           placeholder="https://drive.google.com/file/d/1EazFVTVzs5_hXZL-dhTe2-Y3D6CmP8BK/view?usp=sharing"/><br>
+    <button onclick="getDriveFileId()">Получить ID</button>
+    <br>
     <label for="result-id">ID файла:</label><br>
     <textarea id="result-id" rows="1" cols="50"></textarea>
 </div>
@@ -330,10 +334,11 @@
 <div class="cl_mn">
     <h2>Преобразование ссылки Google Drive</h2>
 
-    <label for="public-link">Введите публичную ссылку:</label><br />
-    <input type="text" id="public-link" placeholder="https://drive.google.com/file/d/[FILE_ID]/view?usp=sharing" /><br />
-    <button onclick="convertToDirectLink()">Преобразовать</button><br />
-    <label for="result-link">Прямая ссылка для скачивания:</label><br />
+    <label for="public-link">Введите публичную ссылку:</label><br/>
+    <input type="text" id="public-link" placeholder="https://drive.google.com/file/d/[FILE_ID]/view?usp=sharing"/><br/>
+    <button onclick="convertToDirectLink()">Преобразовать</button>
+    <br/>
+    <label for="result-link">Прямая ссылка для скачивания:</label><br/>
     <textarea id="result-link" rows="4" cols="50"></textarea>
 </div>
 
@@ -354,6 +359,45 @@
         const matches = publicUrl.match(regex);
         return matches ? matches[1] : null;
     }
+</script>
+
+<h1>Воспроизвести аудиофайл</h1>
+<!-- Используем атрибут th:src для динамического указания URL аудиофайла -->
+<!--<audio controls>-->
+<!--    <source th:src="cloud/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O" type="audio/mpeg">-->
+<!--    Ваш браузер не поддерживает тег audio.-->
+<!--</audio>-->
+
+<audio controls>
+    <source src="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O" type="audio/mpeg">
+</audio>
+<!-- Скрипт для формы с audio-->
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем немедленную отправку формы
+
+        const submitButton = event.submitter; // Кнопка, которая инициировала отправку
+        const url = submitButton.dataset.url; // Получаем URL аудиофайла из атрибута data-url
+
+        if (!url) return; // Если URL не найден, ничего не делаем
+
+        try {
+            // Создаем новый Audio элемент для воспроизведения
+            const audioPlayer = new Audio(url);
+
+            // Воспроизводим звук и ждем окончания воспроизведения
+            audioPlayer.play().then(() => {
+                setTimeout(() => {
+                    // Отправляем форму после воспроизведения звука
+                    document.getElementById("myForm").submit();
+                }, audioPlayer.duration * 1000); // Ждем завершение звука
+            }).catch(error => {
+                console.error(`Ошибка воспроизведения: ${error.message}`);
+            });
+        } catch (error) {
+            console.error(`Ошибка воспроизведения: ${error.message}`);
+        }
+    });
 </script>
 
 </body>

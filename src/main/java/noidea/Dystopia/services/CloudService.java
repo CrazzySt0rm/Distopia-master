@@ -68,13 +68,27 @@ public class CloudService {
     }
 
     // Метод для получения объекта Cloud по его идентификатору
-    public Cloud getCloudById(Long id) {
-        return cloudRepository.findById(id).orElseThrow(() -> new RuntimeException("Запись не найдена"));
+//    public Cloud getCloudById(String id) {
+//        return cloudRepository.findByCloudId(id)
+//                .orElseThrow(() -> new RuntimeException("Запись не найдена"));
+//    }
+
+    public Cloud getCloudById(String id) {
+        return cloudRepository.findByCloudId(id)
+                .orElseThrow(() -> new RuntimeException("Запись не найдена"));
     }
+
+    public String getCloudUrl(String cloudName) {
+        return cloudRepository.findByCloudName(cloudName)
+                .map(Cloud::getCloudName)
+                .orElseThrow(() -> new RuntimeException("Запись не найдена"));
+    }
+
+
 
     public Cloud updateCloud(Cloud cloud) {
         // Найти существующий объект по id
-        Optional<Cloud> existingCloud = cloudRepository.findById(cloud.getId());
+        Optional<Cloud> existingCloud = cloudRepository.findById(String.valueOf(cloud.getId()));
 
         if (existingCloud.isPresent()) {
             Cloud updatedCloud = existingCloud.get();
@@ -88,7 +102,7 @@ public class CloudService {
         }
     }
 
-    public void deleteCloud(Long id) {
+    public void deleteCloud(String id) {
         cloudRepository.deleteById(id);
     }
 }

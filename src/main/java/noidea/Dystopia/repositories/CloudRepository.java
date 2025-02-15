@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CloudRepository extends JpaRepository<Cloud, Long> {
+public interface CloudRepository extends JpaRepository<Cloud, String> {
 
     Optional<Cloud> findByCloudId(String cloudId);
+    Optional<Cloud> findByCloudName(String cloudName);
 }
