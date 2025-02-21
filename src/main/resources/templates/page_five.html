@@ -58,6 +58,20 @@
     color: red;
     transform: 25deg;
     }
+
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {background-color: #ddd;
+    }
 </style>
 
 <script>
@@ -71,7 +85,8 @@
 <div class="xz">
     <form action="https://image.fonwall.ru/o/kn/art-flares-planet-space.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img2.fonwall.ru">
         <button class="buttonQWE" type="submit">
-            <img src="https://image.fonwall.ru/o/kn/art-flares-planet-space.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img2.fonwall.ru" width="340" height="200">
+            <img src="https://image.fonwall.ru/o/kn/art-flares-planet-space.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img2.fonwall.ru"
+                 width="340" height="200">
         </button>
     </form>
 
@@ -80,7 +95,8 @@
 <div class="xy">
     <form action="https://image.fonwall.ru/o/yd/art-wallpaper-food.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img3.fonwall.ru">
         <button class="buttonQWE" type="submit">
-            <img src="https://image.fonwall.ru/o/yd/art-wallpaper-food.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img3.fonwall.ru" width="340" height="200">
+            <img src="https://image.fonwall.ru/o/yd/art-wallpaper-food.jpeg?auto=compress&fit=resize&w=1200&display=large&domain=img3.fonwall.ru"
+                 width="340" height="200">
         </button>
     </form>
 
@@ -90,7 +106,8 @@
 
     <form action="https://image.fonwall.ru/o/fr/space-galaxy-art.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img3.fonwall.ru">
         <button class="buttonQWE" type="submit">
-            <img src="https://image.fonwall.ru/o/fr/space-galaxy-art.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img3.fonwall.ru" width="340" height="200">
+            <img src="https://image.fonwall.ru/o/fr/space-galaxy-art.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img3.fonwall.ru"
+                 width="340" height="200">
         </button>
     </form>
 
@@ -100,6 +117,17 @@
     <button class="buttonQWE" type="submit" id="buttonX">Click</button>
 </div>
 
+<div class="pagination">
+    <a href="page_four">&laquo;</a>
+    <a href="home">1</a>
+    <a href="animation_3D">2</a>
+    <a href="page_three">3</a>
+    <a href="page_four">4</a>
+    <a class="active" href="page_five">5</a>
+    <a href="page_sixth">6</a>
+    <a href="page_seven">7</a>
+    <a href="page_sixth">&raquo;</a>
+</div>
 
 </body>
 </html>

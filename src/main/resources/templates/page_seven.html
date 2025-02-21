@@ -4,165 +4,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>Page seven</title>
+
+    <!-- Добавляем предзагрузку изображения -->
+
 </head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
-
 <style>
-  body {
-  background-size: cover;
-  background: url(https://content-studio.sberdevices.ru/ai-agent/56e1f207-a0f7-464f-adda-4cf8673951ed/d68008bf-5c4e-499b-aaec-5d40651f2024.jpg);
-  }
-  h1 {
-  }
-  .gt {
-  margin-left: 100px;
-  background: #fdfae5;
-  width: 400px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  }
+    <!--    body {-->
+    <!--    margin: 0;-->
+    <!--  font-family: Arial, Helvetica, sans-serif;-->
+    <!--  height: 100vh;-->
+    <!--  /* Заглушка для быстрого рендера */-->
+    <!--  background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */-->
+    <!--  background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22/%3E');-->
+    <!--  background-size: cover;-->
+    <!--  background-position: center;-->
+    <!--}-->
 
-  .card {
-  margin-top: 20px;
-  margin-left: 100px;
-  background: white;
-  width: 400px;
-  border-radius: 10px;
+    /* Фиксируем видео на весь экран */
+    #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
 
-  }
+    /* Стилизация основного контента */
+    .content {
+        position: relative;
+        z-index: 1; /* Контент будет над видео */
+        color: white; /* Цвет текста */
+        text-align: center;
+        padding-top: 20vh; /* Отступ сверху для удобства просмотра */
+    }
 
-  .boom {
-  margin-top: 200px;
-  background: gray;
-<!--  width: 400px;-->
-  display: flex;
-  justify-content: center;
-  max-width: 450px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fdfae5;
-    border: 2px dashed #d4aa70;
-    border-radius: 10px;
+        .gt {
+        margin-left: 100px;
+        background: #e7d6f1;
+        width: 400px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        }
 
-  }
+        .card {
+        margin-top: 20px;
+        margin-left: 100px;
+        background: white;
+        width: 400px;
+        border-radius: 10px;
 
- form {
-    max-width: 450px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fdfae5;
-    border: 2px dashed #d4aa70;
-    border-radius: 10px;
-}
+        }
 
-input,
-textarea,
-select {
-    display: block;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    background-color: #fffce1;
-    border: 2px solid #d4aa70;
-    border-radius: 5px;
-    outline: none;
-}
+        .boom {
+        margin-top: 200px;
+        background: gray;
+      <!--  width: 400px;-->
+        display: flex;
+        justify-content: center;
+        max-width: 450px;
+          margin: 0 auto;
+          padding: 30px;
+          background-color: #e7d6f1;
+          border: 2px dashed #222222;
+          border-radius: 10px;
 
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #c89653;
-}
+        }
 
-button {
-    padding: 12px 24px;
-    background-color: #c89653;
-    color: #fffce1;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
+        .doom {
 
-button:hover {
-    background-color: #b58346;
-}
+        position: absolute;
+        top:  50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        width: 300px;
+        height: 200px;
+        background: #e7d6f1;
+        padding: 10px;
+        border: 2px #222222;
+        border-radius: 10px;
+
+        }
+
+        input:focus {
+      border:/** your style definitions **/
+      outline: /** **/
+      box-shadow: bright-red;
+    }
+
+      button {
+          padding: 12px 24px;
+          background-color: linear-gradient(90deg, #d2b4e2,#e7d6f1,#7869a0);
+          color: #222;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+          background-color: linear-gradient(90deg, #d2b4e2,#e7d6f1,#7869a0);
+      }
+
+      /* Для всех браузеров */
+    ::selection {
+        background-color: #bfffa0; /* Светло-зелёный цвет */
+        color: black; /* Цвет текста внутри выделения */
+    }
+
+    /* Для Firefox */
+    ::-moz-selection {
+        background-color: #bfffa0; /* Светло-зелёный цвет */
+        color: black; /* Цвет текста внутри выделения */
+    }
+
+      .pg {
+      position: absolute;
+      bottom: 0;
+      }
+
+        .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+
+    }
+        .pagination a.active {
+      background-color: dodgerblue;
+      color: white;
+    }
+        .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        }
 </style>
 
+<!--#e7d6f1;-->
+
 <script>
-  function addItem() {
-      alert("Ссылка успешно загружена в базу.");
-  }
+    function addItem() {
+        alert("Ссылка успешно загружена в базу.");
+    }
 </script>
 
 <body>
 
-<div class="gt">
-    <h1>Загружать данные здесь!</h1>
+<video autoplay muted loop id="background-video">
+    <source src="https://cdn.artstation.com/p/video_sources/001/931/342/23.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<!-- Остальной контент страницы -->
+<div class="content">
+    <h1>Пример заголовка</h1>
+    <p>Здесь может быть любой другой контент.</p>
+    <img src="http://localhost:8081/proxy/1jLBnaUx32DtM0k1QpoTPEekFCzYbAjkx" width="340" height="200"><br><br>
+
+    <form action="/cloud_message/cloud_id/" method="GET">
+        <input type="text" id="cloud_id" name="cloud_id" placeholder="введите идентификатор файла"><br><br>
+        <button type="submit" class="button28">показать</button>
+        <br>
+    </form>
+
+<!--    <h1>Введите ID облака:</h1>-->
+<!--    <form action="/cloud_message/cloud_id/" method="GET">-->
+<!--        <label for="cloud_id">ID облака:</label>-->
+<!--        <input type="text" id="cloud_id" name="cloud_id" required><br><br>-->
+<!--        <button type="submit">Найти изображение</button>-->
+<!--        <br><br>-->
+<!--    </form>-->
+
+    <h1>Ваше изображение:</h1>
+    <img th:src="${imageUrl}" alt="Изображение"/>
+
+    <!--    <div class="doom">-->
+    <!--        <img src="">-->
+    <!--    </div>-->
 </div>
 
-<div class="card">
-    <div class="boom">
+<!--<div class="gt">-->
+<!--    <h2>Страница 7 Загрузка PDF документов</h2>-->
+<!--</div>-->
 
-        <h1>Cloud Storage</h1>
+<!--<div class="doom">-->
 
-        <!-- Форма для загрузки файла -->
-        <form id="uploadForm">
-<!--            <label for="file">Выберите файл:</label>-->
-            <input type="file" id="file" name="file"><br><br>
-            <button type="submit">Загрузить</button>
-        </form>
+<!--</div>-->
+<!--<h2>Просмотреть PDF файл из Google Drive</h2>-->
+<!--<p>Введите идентификатор файла:</p>-->
+<!--<div>-->
+<!--    <input type="text" id="fileIdInput" placeholder="Введите идентификатор">-->
+<!--    <button onclick="loadPdf()">Загрузить</button>-->
+<!--</div>-->
 
-        <!-- Кнопка для открытия существующей ссылки -->
-        <a href="#" onclick="openLink('https://drive.google.com/file/d/1qZWZsyeiSXP073SKMFJyokVzSsOcwdbP/view?usp=sharing')">Открыть ссылку</a>
+<!--<div style="margin-top: 20px; width: 100%; height: 500px; border: 1px solid black; overflow: auto;">-->
+<!--    <iframe id="pdfFrame" src="" frameborder="0" style="width: 100%; height: 100%;" allowfullscreen></iframe>-->
+<!--</div>-->
 
+<!--<script>-->
+<!--    function loadPdf() {-->
+<!--        let fileId = document.getElementById('fileIdInput').value.trim();-->
+<!--        if (fileId) {-->
+<!--            let embedUrl = 'https://drive.google.com/file/d/' + fileId + '/preview';-->
+<!--            document.getElementById('pdfFrame').src = embedUrl;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 
+<div class="pg">
+    <div class="pagination">
+        <a href="page_sixth">&laquo;</a>
+        <a href="home">1</a>
+        <a href="animation_3D">2</a>
+        <a href="page_three">3</a>
+        <a href="page_four">4</a>
+        <a href="page_five">5</a>
+        <a href="page_sixth">6</a>
+        <a class="active" href="page_seven">7</a>
+        <a href="home">&raquo;</a>
     </div>
 </div>
 
-<h1>View File from Google Drive</h1>
-
-
-<div id="result"></div>
-
-<h1>Открыть файл из Google Drive</h1>
-<p>Введите идентификатор файла из Google Drive.</p>
-<input type="text" id="cloudId" placeholder="Введите идентификатор файла">
-<button onclick="openFile()">Открыть файл</button>
-<script>
-    async function openFile() {
-        const cloudId = document.getElementById('cloudId').value.trim();
-        if (cloudId === '') {
-            alert('Необходимо ввести идентификатор файла.');
-            return;
-        }
-        try {
-            const response = await fetch(`/api/clouds/${encodeURIComponent(cloudId)}`);
-            if (!response.ok) {
-                throw new Error(`Не удалось получить файл с Google Drive: ${response.status}`);
-            }
-            const blob = await response.blob();
-            const type = response.headers.get('Content-Type');
-            const objectURL = URL.createObjectURL(blob, {type: type}, {end: () => URL.revokeObjectURL(objectURL)});
-            if (type.includes('pdf')) {
-                window.open(objectURL, '_blank');
-            } else {
-                const img = new Image();
-                img.src = objectURL;
-                img.alt = `Открывшийся файл из Google Drive`;
-                document.body.appendChild(img);
-            }
-        } catch (error) {
-            console.error(`Не удалось открыть файл из Google Drive: ${error.message}`);
-        }
-    }
-</script>
 
 </body>
 </html>

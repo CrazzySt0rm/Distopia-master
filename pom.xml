@@ -115,6 +115,14 @@
 			<version>2.3.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+
+
 
 
 		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/software.amazon.awssdk/s3 &ndash;&gt;-->

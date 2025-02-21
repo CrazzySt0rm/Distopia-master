@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
@@ -10,8 +11,12 @@
 <style>
 
     body {
-    background: linear-gradient(to right, #757f9a, #d7dde8);
-    }
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url('http://localhost:8081/proxy/1oeBKfQo_nKASLSiMDK-lXf0h7Fc0ArDj');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     h1 {
     display: flex;
@@ -153,6 +158,21 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    }
+
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {
+    background-color: #ddd;
     }
 </style>
 
@@ -399,6 +419,39 @@
         }
     });
 </script>
+
+<button type="submit">
+    <img src="">
+</button>
+
+
+<div>
+    <h1>Картинка из облака</h1>
+<!--    <img th:src="@{|${cloudName}|}" alt="Изображение из облака"/>-->
+    <form action="http://localhost:8081/proxy/1oeBKfQo_nKASLSiMDK-lXf0h7Fc0ArDj">
+        <button type="submit" class="buttonQWE">
+            <img th:src="@{http://localhost:8081/proxy/1oeBKfQo_nKASLSiMDK-lXf0h7Fc0ArDj}" alt="Изображение из облака" width="340" height="200"/>
+        </button>
+    </form>
+</div>
+<div th:if="${errorMessage != null}">
+    <h1>Ошибка</h1>
+    <p th:text="${errorMessage}">Сообщение об ошибке.</p>
+</div>
+
+<h1>Ваше изображение:</h1>
+<img th:src="${imageUrl}" alt="Изображение"/>
+
+<div class="pagination">
+    <a href="page_five">&laquo;</a>
+    <a href="home">1</a>
+    <a href="animation_3D">2</a>
+    <a href="page_three">3</a>
+    <a href="page_four">4</a>
+    <a href="page_five">5</a>
+    <a class="active" href="page_sixth">6</a>
+    <a href="page_seven">&raquo;</a>
+</div>
 
 </body>
 </html>

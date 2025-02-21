@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.io.IOException;
 @Controller
 //@RestController
 
-//@RequestMapping("/api/clouds")
+//@RequestMapping("/cloud")
 @CrossOrigin(origins = "http://localhost:8081")
 @AllArgsConstructor
 public class CloudController {
@@ -38,39 +39,47 @@ public class CloudController {
         return "redirect:/page_sixth";
     }
 
-
-    @GetMapping("/cloud_message/{id}")
-    public String getCloudMessage(@PathVariable("id") String imageId, Model model) {
+    @GetMapping("/cloud_message/cloud_id/")
+    public String getCloudMessage(@RequestParam("cloud_id") String cloudId, Model model) {
         try {
-            Cloud cloud = cloudService.getCloudById(imageId);
-            if (cloud == null) {
-                throw new RuntimeException("Запись с ID " + imageId + " не найдена");
+            Cloud cloud = cloudService.getCloudById(cloudId);
+            if (cloud != null) {
+                model.addAttribute("imageUrl", cloud.getCloudName()); // Добавляем ссылку на изображение
+                return "page_seven"; // Переходим на страницу с изображением
+            } else {
+                throw new RuntimeException("Запись с ID " + cloudId + " не найдена");
             }
-
-            String cloudUrl = cloud.getCloudName(); // Полная публичная ссылка на файл
-            String fileName = cloud.getCloudName().substring(cloud.getCloudName().lastIndexOf('/') + 1); // Извлекаем имя файла из URL
-
-            model.addAttribute("cloudName", cloudUrl);
-            model.addAttribute("fileName", fileName);
-
-            return "redirect:/page_sixth"; // Укажите имя вашего шаблона
         } catch (RuntimeException e) {
-            log.error("Ошибка при получении записи по ID: {}", imageId, e);
-            model.addAttribute("errorMessage", "Не удалось найти запись с ID " + imageId);
+            log.error("Ошибка при получении записи по ID: {}", cloudId, e);
+            model.addAttribute("errorMessage", "Не удалось найти запись с ID " + cloudId);
             return "error_page";
         }
     }
 
-    //находим audio по url
-    @GetMapping("/cloud_message/{url}")
-    public ResponseEntity<String> getCloudUrl(@PathVariable("url") String cloudUrl) {
-        try {
-            String directUrl = cloudService.getCloudUrl(cloudUrl);
-            return ResponseEntity.ok(directUrl);
-        } catch (RuntimeException e) {
-            log.error("Ошибка при получении записи по URL: {}", cloudUrl, e);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+
+//    @GetMapping("/cloud_message/cloud_id")
+//    public String getCloudMessage(@PathVariable("cloud_id") String cloudId, Model model) {
+//        try {
+//            Cloud cloud = cloudService.getCloudById(cloudId);
+//
+//            if (cloud != null) {
+//                model.addAttribute("cloudName", cloud.getCloudName()); // Передача полной ссылки на изображение
+//
+//                return "page_sixth"; // Переход на страницу с изображением
+//            } else {
+//                throw new RuntimeException("Запись с ID " + cloudId + " не найдена");
+//            }
+//        } catch (RuntimeException e) {
+//            log.error("Ошибка при получении записи по ID: {}", cloudId, e);
+//            model.addAttribute("errorMessage", "Не удалось найти запись с ID " + cloudId);
+//            return "error_page";
+//        }
+//    }
+
+    @GetMapping("/cloud/{fileId}/pdf")
+    public RedirectView downloadPdfFile(@PathVariable String fileId) {
+        String url = "https://drive.google.com/uc?id=" + fileId + "&export=download";
+        return new RedirectView(url);
     }
 
     @PutMapping("/cloud_message/update")
@@ -83,6 +92,19 @@ public class CloudController {
     public HttpStatus deleteCloudMessage(@PathVariable(value = "id") String id) {
         cloudService.deleteCloud(id);
         return HttpStatus.OK;
+    }
+
+    @PostMapping("/cloud_message")
+    public String showCloudMessage(@RequestParam("cloud_name") String cloudName, Model model) {
+        // Проверяем, что ссылка не пустая
+        if (cloudName != null && !cloudName.isEmpty()) {
+            // Передаем ссылку в модель для отображения на странице
+            model.addAttribute(cloudService.getCloudUrl(cloudName));
+            return "page_seven"; // Переход на страницу с отображением файла
+        } else {
+            model.addAttribute("errorMessage", "Пожалуйста, введите ссылку на файл.");
+            return "error_page"; // Переход на страницу с ошибкой
+        }
     }
 }
 
