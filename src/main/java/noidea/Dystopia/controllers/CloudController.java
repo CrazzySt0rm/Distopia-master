@@ -45,7 +45,7 @@ public class CloudController {
             Cloud cloud = cloudService.getCloudById(cloudId);
             if (cloud != null) {
                 model.addAttribute("imageUrl", cloud.getCloudName()); // Добавляем ссылку на изображение
-                return "page_seven"; // Переходим на страницу с изображением
+                return "/page_seven"; // Переходим на страницу с изображением
             } else {
                 throw new RuntimeException("Запись с ID " + cloudId + " не найдена");
             }

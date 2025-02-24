@@ -13,7 +13,8 @@
     body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: url('http://localhost:8081/proxy/1oeBKfQo_nKASLSiMDK-lXf0h7Fc0ArDj');
+    background: linear-gradient(to left, #757f9a, #d7dde8);
+<!--    background: url('http://localhost:8081/proxy/1oeBKfQo_nKASLSiMDK-lXf0h7Fc0ArDj');-->
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -210,9 +211,7 @@
 </div>
 
 <div class="present_image">
-
     <!--    <img th:src="@{'/images/' + ${1}}" alt="Пример изображения">-->
-
     <div class="xz">
         <form th:action="@{'/images/' + ${152}}">
             <button class="buttonQWE" type="submit">
@@ -257,9 +256,6 @@
     }
 </script>
 
-<h1>Вставка изображения</h1>
-<p>ID файла: <input type="text" id="fileId" value="1rX3qTEzEXFFFA5t8b7WVqORdq1ObGuMZ"></p>
-
 <div class="cl_mg">
 
     <h2>Сохранение ссылки в базу данных</h2><br>
@@ -269,10 +265,7 @@
             <input type="text" class="navbar_x" name="cloudName">
         </label>
         <button type="submit" data-url="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O">Отправить</button>
-<!--        <input type="button" id="qweButton1" class="btn-12" value="Отправить"-->
-<!--               data-url="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O">-->
     </form>
-
 
     <form action="#">
         <div class="response_window">
@@ -312,7 +305,6 @@
         return matches ? matches[1] : null;
     }
 </script>
-
 
 <!--<div class="xp" id="images-container"></div>-->
 
@@ -382,11 +374,6 @@
 </script>
 
 <h1>Воспроизвести аудиофайл</h1>
-<!-- Используем атрибут th:src для динамического указания URL аудиофайла -->
-<!--<audio controls>-->
-<!--    <source th:src="cloud/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O" type="audio/mpeg">-->
-<!--    Ваш браузер не поддерживает тег audio.-->
-<!--</audio>-->
 
 <audio controls>
     <source src="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O" type="audio/mpeg">
@@ -420,11 +407,6 @@
     });
 </script>
 
-<button type="submit">
-    <img src="">
-</button>
-
-
 <div>
     <h1>Картинка из облака</h1>
 <!--    <img th:src="@{|${cloudName}|}" alt="Изображение из облака"/>-->
@@ -439,18 +421,16 @@
     <p th:text="${errorMessage}">Сообщение об ошибке.</p>
 </div>
 
-<h1>Ваше изображение:</h1>
-<img th:src="${imageUrl}" alt="Изображение"/>
-
 <div class="pagination">
-    <a href="page_five">&laquo;</a>
-    <a href="home">1</a>
-    <a href="animation_3D">2</a>
-    <a href="page_three">3</a>
-    <a href="page_four">4</a>
-    <a href="page_five">5</a>
-    <a class="active" href="page_sixth">6</a>
-    <a href="page_seven">&raquo;</a>
+    <a href="/page_five">&laquo;</a>
+    <a href="/home">1</a>
+    <a href="/animation_3D">2</a>
+    <a href="/page_three">3</a>
+    <a href="/page_four">4</a>
+    <a href="/page_five">5</a>
+    <a class="active" href="/page_sixth">6</a>
+    <a href="/page_seven">7</a>
+    <a href="/page_seven">&raquo;</a>
 </div>
 
 </body>
