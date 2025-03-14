@@ -10,17 +10,17 @@
 </head>
 
 <style>
-<!--        body {-->
-<!--        margin: 0;-->
-<!--      font-family: Arial, Helvetica, sans-serif;-->
-<!--      height: 100vh;-->
-<!--      /* Заглушка для быстрого рендера */-->
-<!--      background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */-->
-<!--      background-image: url(https://cdnb.artstation.com/p/assets/images/images/070/181/829/4k/one-pixel-brush-mangrove-forest.jpg?1701934908);-->
-<!--      background-size: cover;-->
-<!--      background-position: center;-->
-<!--      background: no-repeat;-->
-<!--    }-->
+        body {
+        margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
+      /* Заглушка для быстрого рендера */
+      background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */
+      background-image: url(https://cdnb.artstation.com/p/assets/images/images/070/181/829/4k/one-pixel-brush-mangrove-forest.jpg?1701934908);
+      background-size: cover;
+      background-position: center;
+      background: no-repeat;
+    }
 
     /* Фиксируем видео на весь экран */
     #background-video {
@@ -172,7 +172,10 @@
     </form>
 
     <h1>Ваше изображение:</h1>
-    <img th:src="${imageUrl}" alt="Изображение" width="340" height="370"/>
+    <img th:src="${imageUrl}" alt="Изображение" width="340" height="400"/>
+
+    <h1>Гиф</h1>
+    <img th:src="${imageUrl}" alt="gif" width="300" height="300"/>
 
     <div class="pg">
         <div class="pagination">

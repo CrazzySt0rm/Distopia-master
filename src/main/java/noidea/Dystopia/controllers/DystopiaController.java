@@ -59,6 +59,7 @@ public class DystopiaController {
         List<Dystopia> dystopias = new ArrayList<Dystopia>();
         model.addAttribute("dystopias", dystopias);
         model.addAttribute("one", fruits);
+//        model.addAttribute("testTwo");
 
 
         String strTime = DateTimeFormatter.ofPattern("HH : mm : ss").format(LocalDateTime.now());
@@ -85,6 +86,18 @@ public class DystopiaController {
         model.addAttribute("test2", dbReader.getMSG());
         return "page_seven";
 
+    }
+
+    @GetMapping("/dystopia_form")
+    public String getDystopiaForm(Model model) {
+        model.addAttribute("test2", dbReader.getMSG());
+        return "dystopia_form";
+    }
+
+    @GetMapping("/confirmation_page")
+    public String getConfirmPage(Model model) {
+        model.addAttribute("test2", dbReader.getMSG());
+        return "confirmation_page";
     }
 }
 

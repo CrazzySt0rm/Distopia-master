@@ -14,9 +14,10 @@
 }
 
     body {
-    height: 100vh;
+    background-color: #f9f9f9;
+    background: url('https://image.fonwall.ru/o/al/fantasy-tree-house.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img3.fonwall.ru');
+    background-size: cover;
 
-    background-image: url(https://img1.akspic.ru/crops/8/3/0/4/6/164038/164038-illustracia-svet-ashamaluevmuzyka-osveshhenie-purpur-1920x1080.jpg);
     cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo26.cur), auto;
     }
 
@@ -26,9 +27,6 @@
 
     .size01 {
     width: 400px;
-    height: 600px;
-    max-width: 100%;
-    max-height: 100%;
     margin-right: 50px;
     display: flex;
     justify-content: right;
@@ -64,7 +62,7 @@
         }
 
         .gf {
-        background: url(https://i.pinimg.com/originals/2f/91/f6/2f91f606d966ff3dbabf72b5f286a9f5.jpg);
+
         width: 300px;
         height; 300px;
 
@@ -92,7 +90,7 @@
       text-shadow: 0 -1px 2px rgba(0,0,0,.2);
       padding: .5em 1em;
       outline: none;
-      border-radius: 3px;
+      border-radius: 50%;
 
       background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
       box-shadow:
@@ -104,12 +102,13 @@
     }
     .button28:hover:not(:active) {
       background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
-      border-radius: 3px;
+      border-radius: 50%;
     }
     .button28:active {
       top: 1px;
-      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
-      border-radius: 3px;
+      background: linear-gradient(to right, #333333, #dd1818);
+<!--      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);-->
+      border-radius: 50%;
       box-shadow:
        0 0 1px rgba(0,0,0,.5) inset,
        0 2px 3px rgba(0,0,0,.5) inset,
@@ -133,17 +132,11 @@
     display: flex;
     justify-content: right;
 
-    background-image: url(https://a.d-cd.net/epyyJAMsUltaHyBl5ZFJFIS4lzU-1920.jpg);
-
     }
     .card {
 
     background: linear-gradient(-45deg, #000, #fff);
-<!--    background: url(https://img3.akspic.ru/previews/8/0/5/9/7/179508/179508-graficeskij_dizajn-huawei_nova_11_pro_8gb_256gb_6_7-huawei-poster-dizajn-360x640.jpg);-->
-    max-width: 100%;
-    max-height: 100%;
-<!--    margin: 0 auto;-->
-    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: column;
@@ -152,7 +145,6 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     padding: 20px;
 <!--    background: #ffffff;-->
-
 
 }
 
@@ -171,6 +163,73 @@
 
 }
 
+    .norm_phne {
+    margin-top: 20px;
+
+    }
+
+    .cool_place {
+    margin-top: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    width: 150px;
+    height: 50px;
+    color: red;
+<!--    background: gray;-->
+<!--    border-radius: 5px;-->
+
+    }
+
+    .cool_place_two {
+    margin-top: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    width: 150px;
+    height: 50px;
+    color: red;
+<!--    background: gray;-->
+<!--    border-radius: 5px;-->
+
+    }
+
+    .cool_place_three {
+    margin-top: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    width: 150px;
+    height: 50px;
+    color: red;
+<!--    background: gray;-->
+<!--    border-radius: 5px;-->
+
+    }
+
+    .cool_place_zero {
+    margin-top: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    width: 150px;
+    height: 50px;
+    color: red;
+<!--    background: gray;-->
+<!--    border-radius: 5px;-->
+
+    }
+
+
+
 </style>
 
 <script>
@@ -188,7 +247,91 @@
 
 </script>
 
+
+<!--    связать кнопки с полем ввода номера телефона-->
+<script>
+    // Получаем ссылку на поле ввода
+    const inputField = document.getElementById('phone');
+
+    // Обрабатываем нажатия кнопок
+    document.querySelectorAll('.button28').forEach(button => {
+        button.addEventListener('click', function() {
+            const inputField = document.getElementById('phone');
+            inputField.value += this.textContent;
+        });
+    });
+</script>
+
 <body>
+
+<h1>Введите номер телефона</h1>
+<div class="norm_phne">
+    <button type="button" class="button28">1</button>
+    <button type="button" class="button28">2</button>
+    <button type="button" class="button28">3</button><br>
+    <button type="button" class="button28">4</button>
+    <button type="button" class="button28">5</button>
+    <button type="button" class="button28">6</button><br>
+    <button type="button" class="button28">7</button>
+    <button type="button" class="button28">8</button>
+    <button type="button" class="button28">9</button><br>
+    <button type="button" class="button28">0</button>
+</div>
+<form action="/dystopia_message" method="POST" enctype="multipart/form-data">
+    <input type="text" id="phone" name="phone" placeholder="Номер телефона">
+    <button type="submit">Отправить</button>
+</form>
+
+<div class="cool_place">
+    <form action="/dystopia_message/phone" enctype="multipart/form-data">
+        <button type="submit" class="button28" name="phone">1</button>
+        <br>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">2</button>
+        <br>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">3</button>
+        <br>
+    </form>
+</div>
+
+<div class="cool_place_two">
+    <form action="#">
+        <button type="submit" class="button28">4</button>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">5</button>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">6</button>
+    </form>
+</div>
+
+<div class="cool_place_three">
+    <form action="#">
+        <button type="submit" class="button28">7</button>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">8</button>
+    </form>
+
+    <form action="#">
+        <button type="submit" class="button28">9</button>
+    </form>
+</div>
+
+<div class="cool_place_zero">
+    <form action="#">
+        <button type="submit" class="button28">0</button>
+    </form>
+</div>
 
 <div class="wrapper">
 

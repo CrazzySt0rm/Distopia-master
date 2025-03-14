@@ -13,10 +13,17 @@ public class EmailRestController {
     private final EmailService emailService;
 
     @Value("${my_email}")
-    private static String myCoolEmail;
+    private String myCoolEmail;
 
-    @GetMapping("/send-email")    public String sendEmail() {
-        try {            emailService.sendEmail(myCoolEmail, "Test", "1000 и одна ночь");
+    @GetMapping("/send-email")
+    public String sendEmail() {
+
+        // Проверяем, что переменная была успешно получена
+        if (myCoolEmail == null || myCoolEmail.isEmpty()) {
+            throw new IllegalStateException("Переменная other_email не установлена!");
+        }
+        try {
+            emailService.sendEmail(myCoolEmail, "Test", "1000 и одна ночь");
             return "Email send successfully";        } catch (Exception e) {
             return "Error sending email: " + e.getMessage();
         }

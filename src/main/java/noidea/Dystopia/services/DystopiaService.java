@@ -1,5 +1,6 @@
 package noidea.Dystopia.services;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import noidea.Dystopia.dto.DystopiaDTO;
@@ -16,7 +17,7 @@ public class DystopiaService {
 
     private final DystopiaRepository dystopiaRepository;
 
-
+    @Transactional
     public Dystopia createDist(DystopiaDTO dystopiaDTO) {
         return dystopiaRepository.save(Dystopia.builder()
                 .name(dystopiaDTO.getName())

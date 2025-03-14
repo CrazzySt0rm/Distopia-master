@@ -13,7 +13,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;import org.springfram
 @RequiredArgsConstructor
 public class EmailService {
     private final JavaMailSender javaMailSender;
-    private final DystopiaRepository dystopiaRepository;
     @Value("${spring.mail.username}")
     private String userName;
     public String sendEmail(String to, String subject, String text) throws MailException {

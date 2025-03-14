@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Набор номера телефона</title>
+</head>
+
+<style>
+
+    body {
+    background-color: #f9f9f9;
+    background: url('https://image.fonwall.ru/o/is/fantasy-art-nature-opxp.jpg?auto=compress&fit=crop&w=1920&h=1080&domain=img3.fonwall.ru');
+    background-size: cover;
+    }
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em 1em;
+      outline: none;
+      border-radius: 50%;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+      opacity: 0.7;
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+      border-radius: 50%;
+    }
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(to right, #333333, #dd1818);
+<!--      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);-->
+      border-radius: 50%;
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
+    }
+
+
+
+<!--    /* Стилизация активного состояния кнопки */-->
+<!--    .number-button:active {-->
+<!--        background-color: lightblue;-->
+<!--    }-->
+
+    /* Подсветка правильного номера */
+    #phone-number.valid {
+        border: 2px solid green;
+    }
+
+    /* Подсветка неправильного номера */
+    #phone-number.invalid {
+        border: 2px solid red;
+    }
+
+    .mble {
+    margin-top: 20px;
+    margin 0 auto;
+
+    }
+
+</style>
+<body>
+<h1>Введите номер телефона</h1>
+<div class="mble">
+    <button type="button" class="button28">1</button>
+    <button type="button" class="button28">2</button>
+    <button type="button" class="button28">3</button><br>
+    <button type="button" class="button28">4</button>
+    <button type="button" class="button28">5</button>
+    <button type="button" class="button28">6</button><br>
+    <button type="button" class="button28">7</button>
+    <button type="button" class="button28">8</button>
+    <button type="button" class="button28">9</button><br>
+    <button type="button" class="button28">0</button>
+</div>
+<form action="/dystopia_message" method="POST" enctype="multipart/form-data">
+    <input type="text" id="phone" name="phone" placeholder="Номер телефона">
+    <button type="submit">Отправить</button>
+</form>
+
+<script>
+    // Получаем ссылку на поле ввода
+    const inputField = document.getElementById('phone');
+
+    // Обрабатываем нажатия кнопок
+    document.querySelectorAll('.button28').forEach(button => {
+        button.addEventListener('click', function() {
+            const inputField = document.getElementById('phone');
+            inputField.value += this.textContent;
+        });
+    });
+</script>
+
+<!--    // Обрабатываем нажатие пробела на клавиатуре-->
+<!--    inputField.addEventListener('keypress', function(event) {-->
+<!--        // Получаем код нажатой клавиши-->
+<!--        const keyCode = event.keyCode || event.which;-->
+
+<!--        // Проверяем, является ли символ цифрой или пробелом-->
+<!--        if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || event.key === ' ') {-->
+<!--            // Добавляем символ в поле ввода-->
+<!--            inputField.value += String.fromCharCode(keyCode);-->
+<!--            event.preventDefault(); // Предотвращаем стандартное поведение браузера-->
+<!--        }-->
+<!--    });-->
+
+<!--    // Обрабатываем отправку формы-->
+<!--    document.querySelector('form').addEventListener('submit', function(event) {-->
+<!--        // Удаляем пробелы из введённого номера перед отправкой-->
+<!--        const phoneInput = document.getElementById('phone');-->
+<!--        phoneInput.value = phoneInput.value.replace(/\s+/g, ''); // Удаляем все пробелы-->
+<!--    });-->
+<!--</script>-->
+
+
+
+</body>
+</html>
