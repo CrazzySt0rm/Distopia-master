@@ -28,6 +28,9 @@ public class DystopiaController {
 
     private final DbReader dbReader = new DbReader();
 
+    private final String sourceUrl = System.getenv("sou_url_seven");
+    private final String sourceUrlTwo = System.getenv("sou_url_eight");
+
 
     @GetMapping("/home")
     public String getDistopiaOne() {
@@ -84,6 +87,8 @@ public class DystopiaController {
     @GetMapping("/page_seven")
     public String getPageSeven(Model model) {
         model.addAttribute("test2", dbReader.getMSG());
+        model.addAttribute("sourceUrl", sourceUrl);
+
         return "page_seven";
 
     }
@@ -98,6 +103,17 @@ public class DystopiaController {
     public String getConfirmPage(Model model) {
         model.addAttribute("test2", dbReader.getMSG());
         return "confirmation_page";
+    }
+
+    @GetMapping("/preview_page")
+    public String getPreviewPage(Model model) {
+        model.addAttribute("sourceUrlTwo", sourceUrlTwo);
+        return "/preview_page";
+    }
+
+    @GetMapping("/base_template")
+    public String getBaseT() {
+        return "base_template";
     }
 }
 

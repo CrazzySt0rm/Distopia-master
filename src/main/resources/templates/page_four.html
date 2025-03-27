@@ -48,6 +48,17 @@
 <!--    cursor: url("images/cursor.cur"), auto;-->
     }
 
+    .ms {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: #222222;
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    }
+
     .mail {
     background: url(https://trikky.ru/wp-content/blogs.dir/1/files/2020/06/08/image-12.jpeg);
     width: 300px;
@@ -64,11 +75,6 @@
     margin-top: 20px;
 
     border-radius: 50%;
-    }
-
-    .mail_container {
-    margin-top: 50%;
-    margin: auto;
     }
 
     h1 {padding: 40px; text-align: center; font-size: 1.5em;}
@@ -569,15 +575,23 @@
     <p id="date" style="font-size:20px;"></p>
 </div>
 
-<div class="mail">
-    <div class="mail_container">
-        <form action="/create_email" method="post" enctype="multipart/form-data">
-            <label>
-                <input type="text" name="message" placeholder="e-mail">
-            </label><br><br>
-            <input type="submit" class="button28" value="отправить письмо" onclick="addMail()"><br><br>
-        </form>
-    </div>
+<div class="ms">
+    <h1>Send Email</h1>
+    <form method="post" action="/send-mail" enctype="multipart/form-data">
+        <label for="to">Получатель:</label><br>
+        <input type="text" id="to" name="to"><br>
+
+        <label for="subject">Тема:</label><br>
+        <input type="text" id="subject" name="subject"><br>
+
+        <label for="body">Сообщение:</label><br>
+        <textarea id="body" name="body"></textarea><br>
+
+        <label for="attachment">Прикрепить файл:</label><br>
+        <input type="file" id="attachment" name="attachment"><br>
+
+        <button type="submit">Отправить</button><br>
+    </form>
 </div>
 
 <!--<div class="time">-->
@@ -615,8 +629,8 @@
                 onclick="audio=document.getElementById('audioPlayer'); audio.currentTime=0; audio.pause(); ">
             Сначала
         </button>
-        <button class="button28" onclick="document.getElementById('audioPlayer').volume+=0.1">Громкость +</button>
-        <button class="button28" onclick="document.getElementById('audioPlayer').volume-=0.1">Громкость -</button>
+        <button class="button28" onclick="changeVolume(0.1)">Громкость +</button>
+        <button class="button28" onclick="changeVolume(-0.1)">Громкость -</button>
     </div>
 
     <div class="voice">
@@ -653,6 +667,20 @@
                 document.getElementById('audioPlayer').load();
             })
             .catch(error => console.error('Ошибка при загрузке аудиофайла:', error));
+    }
+
+    function changeVolume(step) {
+        const audio = document.getElementById('audioPlayer');
+        let newVolume = audio.volume + step;
+
+        // Ограничиваем значение громкости между 0 и 1
+        if (newVolume > 1) {
+            newVolume = 1;
+        } else if (newVolume < 0) {
+            newVolume = 0;
+        }
+
+        audio.volume = newVolume;
     }
 </script>
 

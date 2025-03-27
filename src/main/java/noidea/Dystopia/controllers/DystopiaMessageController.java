@@ -24,14 +24,15 @@ public class DystopiaMessageController {
 
     @PostMapping("/dystopia_message")
     public String saveDystopiaData(@RequestParam("phone") String phone, DystopiaDTO dystopiaDTO, Model model) {
+        model.addAttribute(dystopiaService.createDist(dystopiaDTO));
         // Проверяем, что телефон введен корректно
         if (!isValidPhone(dystopiaDTO.getPhone())) {
             model.addAttribute("error", "Некорректный номер телефона");
             return "redirect:/dystopia_form";
         }
-
-        // Сохраняем данные
-        model.addAttribute(dystopiaService.createDist(dystopiaDTO));
+//
+//        // Сохраняем данные
+//        model.addAttribute(dystopiaService.createDist(dystopiaDTO));
 
         // Перенаправляем на страницу подтверждения
         return "redirect:/confirmation_page";

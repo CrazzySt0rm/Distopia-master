@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <!--    <link th:href="@{/styles.css}" rel="stylesheet">-->
     <title>Page seven</title>
 
     <!-- Добавляем предзагрузку изображения -->
@@ -10,140 +12,203 @@
 </head>
 
 <style>
-        body {
-        margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      height: 100vh;
-      /* Заглушка для быстрого рендера */
-      background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */
-      background-image: url(https://cdnb.artstation.com/p/assets/images/images/070/181/829/4k/one-pixel-brush-mangrove-forest.jpg?1701934908);
-      background-size: cover;
-      background-position: center;
-      background: no-repeat;
+    body {
+    margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  /* Заглушка для быстрого рендера */
+  background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */
+  background-image: url(https://cdnb.artstation.com/p/assets/images/images/070/181/829/4k/one-pixel-brush-mangrove-forest.jpg?1701934908);
+  background-size: cover;
+  background-position: center;
+  background: no-repeat;
+}
+
+/* Фиксируем видео на весь экран */
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Стилизация основного контента */
+.content {
+    position: relative;
+    z-index: 1; /* Контент будет над видео */
+    color: white; /* Цвет текста */
+    text-align: center;
+    padding-top: 20vh; /* Отступ сверху для удобства просмотра */
+}
+
+    .gt {
+    margin-left: 100px;
+    background: #e7d6f1;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
     }
 
-    /* Фиксируем видео на весь экран */
-    #background-video {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+    .card {
+    margin-top: 20px;
+    margin-left: 100px;
+    background: white;
+    width: 400px;
+    border-radius: 10px;
+
     }
 
-    /* Стилизация основного контента */
-    .content {
-        position: relative;
-        z-index: 1; /* Контент будет над видео */
-        color: white; /* Цвет текста */
-        text-align: center;
-        padding-top: 20vh; /* Отступ сверху для удобства просмотра */
+    .boom {
+    margin-top: 200px;
+    background: gray;
+  <!--  width: 400px;-->
+    display: flex;
+    justify-content: center;
+    max-width: 450px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #e7d6f1;
+      border: 2px dashed #222222;
+      border-radius: 10px;
+
     }
 
-        .gt {
-        margin-left: 100px;
-        background: #e7d6f1;
-        width: 400px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-        }
+    .doom {
 
-        .card {
-        margin-top: 20px;
-        margin-left: 100px;
-        background: white;
-        width: 400px;
-        border-radius: 10px;
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+    height: 200px;
+    background: #e7d6f1;
+    padding: 10px;
+    border: 2px #222222;
+    border-radius: 10px;
 
-        }
-
-        .boom {
-        margin-top: 200px;
-        background: gray;
-      <!--  width: 400px;-->
-        display: flex;
-        justify-content: center;
-        max-width: 450px;
-          margin: 0 auto;
-          padding: 30px;
-          background-color: #e7d6f1;
-          border: 2px dashed #222222;
-          border-radius: 10px;
-
-        }
-
-        .doom {
-
-        position: absolute;
-        top:  50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-
-        width: 300px;
-        height: 200px;
-        background: #e7d6f1;
-        padding: 10px;
-        border: 2px #222222;
-        border-radius: 10px;
-
-        }
-
-        input:focus {
-      border:/** your style definitions **/
-      outline: /** **/
-      box-shadow: bright-red;
     }
 
-      button {
-          padding: 12px 24px;
-          background-color: linear-gradient(90deg, #d2b4e2,#e7d6f1,#7869a0);
-          color: #222;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
-          font-family: 'Courier New', Courier, monospace;
-          font-weight: bold;
-          transition: background-color 0.3s ease;
-      }
-
-      button:hover {
-          background-color: linear-gradient(90deg, #d2b4e2,#e7d6f1,#7869a0);
-      }
-
-      /* Для всех браузеров */
-    ::selection {
-        background-color: #bfffa0; /* Светло-зелёный цвет */
-        color: black; /* Цвет текста внутри выделения */
+    .hz {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     }
 
-    /* Для Firefox */
-    ::-moz-selection {
-        background-color: #bfffa0; /* Светло-зелёный цвет */
-        color: black; /* Цвет текста внутри выделения */
+    .it {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
     }
 
-      .pg {
-      position: absolute;
-      bottom: 0;
-      }
+    .u_l {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    color: #222222;
+    }
 
-        .pagination a {
-      color: black;
-      float: left;
-      padding: 8px 16px;
+  /* Для всех браузеров */
+::selection {
+    background-color: #bfffa0; /* Светло-зелёный цвет */
+    color: black; /* Цвет текста внутри выделения */
+}
+
+/* Для Firefox */
+::-moz-selection {
+    background-color: #bfffa0; /* Светло-зелёный цвет */
+    color: black; /* Цвет текста внутри выделения */
+}
+
+  .pg {
+  position: absolute;
+  bottom: 0;
+  }
+
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+
+}
+    .pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+    .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    }
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
       text-decoration: none;
-      transition: background-color .3s;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em 1em;
+      outline: none;
+      border-radius: 3px;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+      opacity: 0.7;
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
 
     }
-        .pagination a.active {
-      background-color: dodgerblue;
-      color: white;
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
     }
-        .pagination a:hover:not(.active) {
-        background-color: #ddd;
-        }
+
+    .sphere_button {
+      position: relative;
+      display: inline-block;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em;
+      outline: none;
+      border-radius: 50%;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+
+    }
+
+    details {
+
+    width: 700px;
+
+    padding: 10px 10px;
+    background-color: #e4eaef;
+    border-radius: 5px;
+    color: #222222;
+    }
+
+
+
+
 </style>
 
 <script>
@@ -152,45 +217,110 @@
     }
 </script>
 
+<script>
+    function addFeedback() {
+        alert("Благодарим за ваш отзыв.");
+    }
+</script>
+
 <body>
 
+
 <video preload="auto" autoplay muted loop id="background-video">
-    <source src="https://cdn.artstation.com/p/video_sources/001/931/342/23.mp4" type="video/mp4">
+    <source th:src="${sourceUrl}" type="video/mp4">
+    <!--    <source src="https://cdn.artstation.com/p/video_sources/001/931/342/23.mp4" type="video/mp4">-->
     Your browser does not support the video tag.
+    <img src="https://sun9-69.userapi.com/impg/dQ2EdegWsE-dtG0ScxksyL3un-iD-Ss5qetnrA/7rTbPMYsfxs.jpg?size=1200x1637&quality=96&sign=9233cae532ef8e515cab5e283958ff55&c_uniq_tag=egnouWGjbgwTo-VM-zJqsPuFe3FzeeBl3IeUqo9jCc4&type=album"
+         alt="Fallback image" style="width: 100vw; height: 100vh; object-fit: cover;">
 </video>
+
 
 <!-- Остальной контент страницы -->
 <div class="content">
-    <h1>Пример заголовка</h1>
-    <p>Здесь может быть любой другой контент.</p>
-    <img src="http://localhost:8081/proxy/1jLBnaUx32DtM0k1QpoTPEekFCzYbAjkx" width="340" height="200"><br><br>
+    <menu>
 
-    <form action="/cloud_message/cloud_id/" method="GET">
-        <input type="text" id="cloud_id" name="cloud_id" placeholder="введите идентификатор файла"><br><br>
-        <button type="submit" class="button28">показать</button>
-        <br>
-    </form>
 
-    <h1>Ваше изображение:</h1>
-    <img th:src="${imageUrl}" alt="Изображение" width="340" height="400"/>
+        <details>
+            <button type="button" class="sphere_button"></button>
 
-    <h1>Гиф</h1>
-    <img th:src="${imageUrl}" alt="gif" width="300" height="300"/>
 
-    <div class="pg">
-        <div class="pagination">
-            <a href="/page_sixth">&laquo;</a>
-            <a href="/home">1</a>
-            <a href="/animation_3D">2</a>
-            <a href="/page_three">3</a>
-            <a href="/page_four">4</a>
-            <a href="/page_five">5</a>
-            <a href="/page_sixth">6</a>
-            <a class="active" href="/page_seven">7</a>
-            <a href="/home">&raquo;</a>
-        </div>
-    </div>
+            <summary>Details</summary>
+            <h1>Добро пожаловать!</h1>
+            <p>Здесь может быть любой другой контент.</p>
+            <img src="http://localhost:8081/proxy/1jLBnaUx32DtM0k1QpoTPEekFCzYbAjkx" width="340" height="200"><br><br>
+
+            <!-- Контейнер для вывода результата -->
+            <div id="resultContainer"></div>
+
+
+            <form action="/cloud_message/cloud_id/" method="GET">
+                <input type="text" id="cloud_id" name="cloud_id" placeholder="введите идентификатор файла"><br><br>
+                <button type="submit" class="button28">показать</button>
+                <br>
+            </form>
+
+            <!--    <form action="http://localhost:8081/proxy/1AgPurCVTNWZOI-vpeAArcNhPreAfcB0Z">-->
+            <!--        <button type="submit" class="button28">-->
+            <!--&lt;!&ndash;            <img src="http://localhost:8081/proxy/1AgPurCVTNWZOI-vpeAArcNhPreAfcB0Z" width="200" height="300">&ndash;&gt;-->
+            <!--            <img src="http://localhost:8081/proxy/1AgPurCVTNWZOI-vpeAArcNhPreAfcB0Z" width="200" height="300">-->
+            <!--        </button>-->
+            <!--    </form>-->
+
+            <div class="hz">
+                <audio id="player" controls="controls" autoplay="autoplay" loop="loop" muted="muted">
+                    <source src="/audio/listen/20" type="audio/mp3">
+                    <!--        <source src="https://soundbank.one/wp-content/uploads/sound/Sound_13214.mp3">-->
+                </audio>
+            </div>
+
+            <div class="it">
+                <form action="/feedback/create" method="post" enctype="multipart/form-data">
+                    <input type="text" name="guestsFeedback" placeholder="оставьте свой отзыв" required><br><br>
+
+                    <button type="submit" class="button28" onclick="addFeedback()">отправить</button>
+                    <br>
+
+
+                </form>
+            </div>
+
+            <!--    <video autoplay="autoplay">-->
+            <!--        <source src="/cloud/" type="video/mpeg">-->
+            <!--    </video>-->
+
+
+            <div class="u_l">
+                <td style="text-align: left; padding-left: 10px;">
+                    <h3 class="heading">Полезные ссылки</h3>
+                    <ul>
+                        <li><a href="home">Домой</a></li>
+                        <li><a href="http://wotpack.ru">О нас</a></li>
+                    </ul>
+                </td>
+            </div>
+
+            <!--    <a href="https://pikbest.com//video/nebula-space-universe-wallpaper-video_10130920.html">Free video from pikbest.com</a>-->
+
+
+            <div class="pg">
+                <div class="pagination">
+                    <a href="/page_sixth">&laquo;</a>
+                    <a href="/home">1</a>
+                    <a href="/animation_3D">2</a>
+                    <a href="/page_three">3</a>
+                    <a href="/page_four">4</a>
+                    <a href="/page_five">5</a>
+                    <a href="/page_sixth">6</a>
+                    <a class="active" href="/page_seven">7</a>
+                    <a href="/home">&raquo;</a>
+                </div>
+            </div>
+
+        </details>
+    </menu>
 </div>
+
+
 
 </body>
 </html>

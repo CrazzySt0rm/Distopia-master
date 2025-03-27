@@ -14,7 +14,7 @@ public class DystopiaDTO {
     @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Некорректный номер телефона")
     private String phone;
 
-    @Size(min = 10, max = 500, message = "Сообщение должно быть от 10 до 500 символов")
+//    @Size(min = 10, max = 500, message = "Сообщение должно быть от 10 до 500 символов")
     private String message;
 
     private String gender;

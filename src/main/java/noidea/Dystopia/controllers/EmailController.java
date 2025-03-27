@@ -1,40 +1,55 @@
 package noidea.Dystopia.controllers;
 
-import jakarta.mail.MessagingException;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import noidea.Dystopia.dto.DystopiaDTO;
 import noidea.Dystopia.services.EmailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:8081")
+@RequiredArgsConstructor
 public class EmailController {
+
+    private static final Logger log = LoggerFactory.getLogger(EmailController.class);
 
     private final EmailService emailService;
 
-    @Value("${other_email}")
-    private String friendMail;
+    @Value("${my_email}")
+    private String myMail;
+//    private final String friendEmail;
 
-    @PostMapping("/create_email")
-    public String sdMail(Model model, DystopiaDTO dystopiaDTO) throws MessagingException {
-
-        // Проверяем, что переменная была успешно получена
-        if (friendMail == null || friendMail.isEmpty()) {
-            throw new IllegalStateException("Переменная other_email не установлена!");
-        }
-
-        model.addAttribute(emailService.sendEmail(friendMail,"TestTwo", dystopiaDTO.getMessage()));
-        return "redirect:/page_four";
+    @GetMapping("/send-mail")
+    public ModelAndView showForm() {
+        return new ModelAndView("email-form");
     }
 
-    @GetMapping("/mail")
-    public String getMail() {
+    @PostMapping("/send-mail")
+    public String sendEmail(
+            @RequestParam("to") String to,
+            @RequestParam("subject") String subject,
+            @RequestParam("body") String body,
+            @RequestParam("attachment") MultipartFile attachment
+    ) throws Exception {
+        if (!attachment.isEmpty()) {
+            emailService.sendEmailWithAttachment(to, subject, body, attachment);
+        } else {
+            emailService.sendSimpleMessage(to, subject, body);
+        }
         return "redirect:/page_four";
     }
 }
+
+
+
+

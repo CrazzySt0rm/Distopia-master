@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <title>Preview page</title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+    <!-- CSS Reset : BEGIN -->
+</head>
+
+<style>
+
+    body {
+
+    margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
+      /* Заглушка для быстрого рендера */
+      background-color: #f9f9f9; /* Цвет фона, похожий на оттенок изображения */
+
+      background-size: cover;
+      background-position: center;
+      background: no-repeat;
+
+    }
+
+
+    /* Фиксируем видео на весь экран */
+      #background-video {
+          position: fixed;
+          top: 0;
+          left: 0;
+          min-width: 100%;
+          min-height: 100%;
+          z-index: -1;
+          object-fit: cover;
+      }
+
+      /* Стилизация основного контента */
+      .content {
+          position: relative;
+          z-index: 1; /* Контент будет над видео */
+          color: #222222;
+          text-align: center;
+          padding-top: 20vh; /* Отступ сверху для удобства просмотра */
+      }
+
+    .button28 {
+      position: relative;
+      display: inline-block;
+      font-size: 90%;
+      font-weight: 700;
+      color: rgb(209,209,217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+      padding: .5em;
+      outline: none;
+      border-radius: 3px;
+
+      background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+      box-shadow:
+       0 1px rgba(255,255,255,.2) inset,
+       0 3px 5px rgba(0,1,6,.5),
+       0 0 1px 1px rgba(0,1,6,.2);
+      transition: .2s ease-in-out;
+<!--      opacity: 0.7;-->
+    }
+    .button28:hover:not(:active) {
+      background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+
+    }
+    .button28:active {
+      top: 1px;
+      background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+
+      box-shadow:
+       0 0 1px rgba(0,0,0,.5) inset,
+       0 2px 3px rgba(0,0,0,.5) inset,
+       0 1px 1px rgba(255,255,255,.1);
+    }
+</style>
+
+<body>
+
+<div class="content">
+
+    <video preload="auto" autoplay muted loop id="background-video">
+<!--        <source src=https://assets.mixkit.co/videos/51585/51585-720.mp4-->
+<!--                type="video/mp4">-->
+        <!--    <source src="https://cdn.artstation.com/p/video_sources/001/931/342/23.mp4" type="video/mp4">-->
+<!--        <source src="https://assets.mixkit.co/videos/1610/1610-720.mp4" type="video/mp4">-->
+<!--        <source th:src="${sourceUrlTwo}" type="video/mp4">-->
+<!--        <source src="https://play.vsthemes.org/fhd/28/70428.webm">-->
+        <source src="https://www.desktophut.com/files/1668458692-1668458692-star-citizen-live-wallpaper.mp4">
+
+<!--        <source src="https://desktophut.com/files/Star%20Citizen%20Live%20Wallpaper%20HD.mp4">-->
+        Your browser does not support the video tag.
+        <img src="https://sun9-69.userapi.com/impg/dQ2EdegWsE-dtG0ScxksyL3un-iD-Ss5qetnrA/7rTbPMYsfxs.jpg?size=1200x1637&quality=96&sign=9233cae532ef8e515cab5e283958ff55&c_uniq_tag=egnouWGjbgwTo-VM-zJqsPuFe3FzeeBl3IeUqo9jCc4&type=album"
+             alt="Fallback image" style="width: 100vw; height: 100vh; object-fit: cover;">
+    </video>
+
+
+    <h1>Ваше изображение</h1>
+    <form action="http://wotpack.ru">
+        <button type="submit" class="button28">
+            <img th:src="${imageUrl}" alt="Изображение" width="340" height="420"/>
+        </button>
+    </form>
+
+<!--    <video autoplay="autoplay" muted="muted" loop="loop">-->
+<!--        <source src="https://videocdn.cdnpk.net/videos/df617aba-6c82-49c9-a6f3-7ef39fceeaea/horizontal/previews/clear/large.mp4?token=exp=-->
+<!--        1742534902~hmac=42a62d4acd4f751af19eb8bf2517566cc81474e5f210291eedeaa145486b7a9d" type="video/mpeg">-->
+<!--    </video>-->
+
+<!--    <h1>Гиф</h1>-->
+<!--    <img th:src="${imageUrl}" alt="gif" width="300" height="300"/>-->
+
+<!--    <img th:src="@{http://localhost:8081/cloud/${al}}"/>-->
+
+</div>
+</body>
+</html>

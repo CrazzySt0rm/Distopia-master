@@ -45,7 +45,7 @@ public class CloudController {
             Cloud cloud = cloudService.getCloudById(cloudId);
             if (cloud != null) {
                 model.addAttribute("imageUrl", cloud.getCloudName()); // Добавляем ссылку на изображение
-                return "/page_seven"; // Переходим на страницу с изображением
+                return "/preview_page"; // Переходим на страницу с изображением
             } else {
                 throw new RuntimeException("Запись с ID " + cloudId + " не найдена");
             }
@@ -56,25 +56,6 @@ public class CloudController {
         }
     }
 
-
-//    @GetMapping("/cloud_message/cloud_id")
-//    public String getCloudMessage(@PathVariable("cloud_id") String cloudId, Model model) {
-//        try {
-//            Cloud cloud = cloudService.getCloudById(cloudId);
-//
-//            if (cloud != null) {
-//                model.addAttribute("cloudName", cloud.getCloudName()); // Передача полной ссылки на изображение
-//
-//                return "page_sixth"; // Переход на страницу с изображением
-//            } else {
-//                throw new RuntimeException("Запись с ID " + cloudId + " не найдена");
-//            }
-//        } catch (RuntimeException e) {
-//            log.error("Ошибка при получении записи по ID: {}", cloudId, e);
-//            model.addAttribute("errorMessage", "Не удалось найти запись с ID " + cloudId);
-//            return "error_page";
-//        }
-//    }
 
     @GetMapping("/cloud/{fileId}/pdf")
     public RedirectView downloadPdfFile(@PathVariable String fileId) {
