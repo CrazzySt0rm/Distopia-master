@@ -35,7 +35,7 @@ public class DystopiaMessageController {
 //        model.addAttribute(dystopiaService.createDist(dystopiaDTO));
 
         // Перенаправляем на страницу подтверждения
-        return "redirect:/confirmation_page";
+        return "redirect:/home";
     }
 
     private boolean isValidPhone(String phone) {

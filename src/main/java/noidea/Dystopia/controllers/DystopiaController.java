@@ -28,7 +28,7 @@ public class DystopiaController {
 
     private final DbReader dbReader = new DbReader();
 
-    private final String sourceUrl = System.getenv("sou_url_seven");
+    private final String sourceUrl = System.getenv("sou_url_nine");
     private final String sourceUrlTwo = System.getenv("sou_url_eight");
 
 
@@ -52,7 +52,7 @@ public class DystopiaController {
 
         model.addAttribute("xyz", humans);
         model.addAttribute("title", "imperium");
-        return "page_three";
+        return "/page_three";
 
     }
 
@@ -62,6 +62,7 @@ public class DystopiaController {
         List<Dystopia> dystopias = new ArrayList<Dystopia>();
         model.addAttribute("dystopias", dystopias);
         model.addAttribute("one", fruits);
+        model.addAttribute("test2", dbReader.getMSG());
 //        model.addAttribute("testTwo");
 
 

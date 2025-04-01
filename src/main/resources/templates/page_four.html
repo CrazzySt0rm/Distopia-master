@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
     <title>Fantasy</title>
     <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/32x32-free-design-icons/32/Feather.png">
 </head>
@@ -459,91 +460,6 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const fInput = document.getElementById('fileInput');
-        const pBar = document.getElementById('progressBar');
-        const pText = document.getElementById('progressText');
-        const fName = document.getElementById('fileName');
-        const modal = document.getElementById('myModal');
-        const cModal = document.getElementById('closeModal');
-        const uImage = document.getElementById('uploadedImageModal');
-        const pContainer = document.getElementById('previewContainer');
-        const cBtn = document.getElementById('clearButton');
-        fInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onloadstart = () => {
-                    pBar.style.width = '0%';
-                    pText.style.display = 'block';
-                    pText.innerText = '0%';
-                    pContainer.style.display = 'none';
-                    cBtn.style.display = 'none';
-                };
-                reader.onprogress = (event) => {
-                    if (event.lengthComputable) {
-                        const progress =
-                            (event.loaded / event.total) * 100;
-                        pBar.style.width = `${progress}%`;
-                        pText.innerText = `${Math.round(progress)}%`;
-                    }
-                };
-                reader.onload = () => {
-                    const uploadTime = 4000;
-                    const interval = 50;
-                    const steps = uploadTime / interval;
-                    let currentStep = 0;
-                    const updateProgress = () => {
-                        const progress = (currentStep / steps) * 100;
-                        pBar.style.width = `${progress}%`;
-                        pText.innerText = `${Math.round(progress)}%`;
-                        currentStep++;
-
-                        if (currentStep <= steps) {
-                            setTimeout(updateProgress, interval);
-                        } else {
-                            pBar.style.width = '100%';
-                            pText.innerText = '100%';
-                            fName.innerText = `File Name: ${file.name}`;
-                            pContainer.innerHTML =
-                                `<img src="${reader.result}"
-                                      alt="Preview" id="previewImage">`;
-                            pContainer.style.display = 'block';
-                            cBtn.style.display = 'block';
-                        }
-                    };
-                    setTimeout(updateProgress, interval);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                alert('Please select a valid image file.');
-                fInput.value = '';
-            }
-        });
-        pContainer.addEventListener('click', () => {
-            modal.style.display = 'block';
-            uImage.src = document.getElementById('previewImage').src;
-        });
-        cModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        cBtn.addEventListener('click', () => {
-            fInput.value = '';
-            pBar.style.width = '0%';
-            pText.style.display = 'none';
-            fName.innerText = '';
-            pContainer.style.display = 'none';
-            cBtn.style.display = 'none';
-        });
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    });
-</script>
-
-<script>
     function addItem() {
         alert("Не забудь поиграть в Lost Ark!")
     }
@@ -590,7 +506,8 @@
         <label for="attachment">Прикрепить файл:</label><br>
         <input type="file" id="attachment" name="attachment"><br>
 
-        <button type="submit">Отправить</button><br>
+        <button type="submit">Отправить</button>
+        <br>
     </form>
 </div>
 
@@ -690,51 +607,164 @@
     }
 </style>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const fInput = document.getElementById('fileInput');
+    const pBar = document.getElementById('progressBar');
+    const pText = document.getElementById('progressText');
+    const fName = document.getElementById('fileName');
+    const modal = document.getElementById('myModal');
+    const cModal = document.getElementById('closeModal');
+    const uImage = document.getElementById('uploadedImageModal');
+    const pContainer = document.getElementById('previewContainer');
+    const cBtn = document.getElementById('clearButton');
+
+
+    // Старый код для очистки формы
+    function clearForm() {
+        if (fInput.files.length > 0) {
+            fInput.value = '';
+        }
+    pBar.style.width = '0%';
+    pText.style.display = 'none';
+    fName.innerText = '';
+    pContainer.style.display = 'none';
+    cBtn.style.display = 'none';
+    }
+
+    fInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onloadstart = () => {
+                pBar.style.width = '0%';
+                pText.style.display = 'block';
+                pText.innerText = '0%';
+                pContainer.style.display = 'none';
+                cBtn.style.display = 'none';
+            };
+            reader.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const progress = (event.loaded / event.total) * 100;
+                    pBar.style.width = `${progress}%`;
+                    pText.innerText = `${Math.round(progress)}%`;
+                }
+            };
+            reader.onload = () => {
+                const uploadTime = 4000;
+                const interval = 50;
+                const steps = uploadTime / interval;
+                let currentStep = 0;
+                const updateProgress = () => {
+                    const progress = (currentStep / steps) * 100;
+                    pBar.style.width = `${progress}%`;
+                    pText.innerText = `${Math.round(progress)}%`;
+                    currentStep++;
+
+                    if (currentStep <= steps) {
+                        setTimeout(updateProgress, interval);
+                    } else {
+                        pBar.style.width = '100%';
+                        pText.innerText = '100%';
+                        fName.innerText = `File Name: ${file.name}`;
+                        pContainer.innerHTML = `
+                            <img src="${reader.result}"
+                                 alt="Preview" id="previewImage">
+                        `;
+                        pContainer.style.display = 'block';
+                        cBtn.style.display = 'block';
+                    }
+                };
+                setTimeout(updateProgress, interval);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Please select a valid image file.');
+            fInput.value = '';
+        }
+    });
+
+    pContainer.addEventListener('click', () => {
+        modal.style.display = 'block';
+        uImage.src = document.getElementById('previewImage').src;
+    });
+
+    cModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    cBtn.addEventListener('click', () => {
+    console.log("Кнопка clear нажата");  // Этот лог покажет, что клик зарегистрирован
+        clearForm();
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});
+</script>
+
 <div class="card">
-    <menu>
-        <details>
-
-            <form action="/image_stat/create" method="post" enctype="multipart/form-data">
+    <form id="myForm" action="/image_stat/create" method="post" enctype="multipart/form-data">
 
 
-                <h1 class="app-title">
-                    <i class="fas fa-file-upload"></i>
-                    GeeksforGeeks
-                </h1>
-                <h3 class="app-subtitle">
-                    File Upload with Progress Bar
-                </h3>
-                <label for="fileInput" class="file-label">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    Choose a file
-                </label>
-                <input type="file" id="fileInput" name="file1" class="file-input"/>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar"></div>
-                    <div class="progress-text" id="progressText"></div>
-                </div>
-                <div class="file-details">
-                    <div class="file-name" name="file1" id="fileName"></div>
-                    <button class="clear-button" id="clearButton">
-                        <i class="fas fa-times"></i>
-                        Clear
-                    </button>
-                </div>
-                <div class="preview-container" id="previewContainer"></div>
-
-                <input type="submit" value="отправить">
-                <!--    <button type="submit">-->
-                <!--        Отправить-->
-                <!--    </button>-->
-                <div class="modal" id="myModal">
-                    <span class="close" id="closeModal">&times;</span>
-                    <img class="modal-content" id="uploadedImageModal">
-                </div>
-
-            </form>
-        </details>
-    </menu>
+        <h1 class="app-title">
+            GeeksforGeeks </h1>
+        <h3 class="app-subtitle"> File Upload with Progress Bar
+        </h3>    <label for="fileInput" class="file-label">
+        Choose a file
+        <input type="hidden" name="audioID" value="10">
+    </label> <input type="file" id="fileInput" name="file1" class="file-input"/>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <div class="progress-text" id="progressText"></div>
+        </div>
+        <div class="file-details">
+            <div class="file-name" name="file1" id="fileName"></div>
+            <button type="button" class="clear-button" id="clearButton">
+                Clear
+            </button>
+        </div>
+        <div class="preview-container" id="previewContainer"></div>
+<!--        <input type="submit" value="отправить">-->
+        <button type="submit" data-url="http://localhost:8081/proxy/1aerPjjXGQVg6fcq6jpteM0GuupS-eL2O">отправить</button>
+        <div class="modal" id="myModal">
+            <span class="close" id="closeModal">&times;</span> <img class="modal-content"
+                                                                    id="uploadedImageModal">
+        </div>
+    </form>
 </div>
+
+<!-- Скрипт для формы с audio-->
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем немедленную отправку формы
+
+        const submitButton = event.submitter; // Кнопка, которая инициировала отправку
+        const url = submitButton.dataset.url; // Получаем URL аудиофайла из атрибута data-url
+
+        if (!url) return; // Если URL не найден, ничего не делаем
+
+        try {
+            // Создаем новый Audio элемент для воспроизведения
+            const audioPlayer = new Audio(url);
+
+            // Воспроизводим звук и ждем окончания воспроизведения
+            audioPlayer.play().then(() => {
+                setTimeout(() => {
+                    // Отправляем форму после воспроизведения звука
+                    document.getElementById("myForm").submit();
+                }, audioPlayer.duration * 1000); // Ждем завершение звука
+            }).catch(error => {
+                console.error(`Ошибка воспроизведения: ${error.message}`);
+            });
+        } catch (error) {
+            console.error(`Ошибка воспроизведения: ${error.message}`);
+        }
+    });
+</script>
 
 
 <!--____________________________________________________________________-->
@@ -894,6 +924,7 @@
 <menu>
     <details>
         <div class="hw05">
+
 
         </div>
     </details>

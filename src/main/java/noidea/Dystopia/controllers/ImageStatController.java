@@ -7,9 +7,12 @@ import noidea.Dystopia.models.ImageStat;
 import noidea.Dystopia.response.ResponseImage;
 import noidea.Dystopia.services.ImageService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,6 +29,7 @@ import java.util.stream.Collectors;
 public class ImageStatController {
 
     private final ImageService imageService;
+    private final Logger logger = LoggerFactory.getLogger(ImageStatController.class);
 
 
     @GetMapping("/")
@@ -43,10 +47,51 @@ public class ImageStatController {
     }
 
     @PostMapping("/image_stat/create")
-    public String createImageStat(@RequestParam("file1") MultipartFile file1, ImageStat imageStat) throws IOException {
-        imageService.saveImageStat(imageStat, file1);
-        //return "redirect:/";
+    public String createImageStat(
+            @RequestParam("file1") MultipartFile file1,
+            ImageStat imageStat,
+            BindingResult bindingResult
+    ) throws IOException {
+        // Объединение всех проверок в одном месте
+        validateFile(file1, bindingResult);
+
+        // Если есть ошибки, немедленно возвращаемся с перенаправлением
+        if (bindingResult.hasErrors()) {
+            return "redirect:/error_page";
+        }
+
+        // Сохранение файла и метаданных
+        try {
+            imageService.saveImageStat(imageStat, file1);
+        } catch (IOException e) {
+            logger.error("Ошибка при сохранении файла.", e);
+            bindingResult.rejectValue("file1", "error.file", "Ошибка при обработке файла.");
+            return "redirect:/error_page";
+        }
+
         return "redirect:/page_four";
+    }
+
+    private void validateFile(MultipartFile file1, BindingResult result) {
+        // Проверка на пустоту
+        if (file1.isEmpty()) {
+            result.rejectValue("file1", "error.file", "Пожалуйста, выберите файл.");
+            return;
+        }
+
+        // Проверка типа файла
+        String contentType = file1.getContentType();
+        if (!contentType.startsWith("image")) {
+            result.rejectValue("file1", "error.file", "Неподдерживаемый формат файла.");
+            return;
+        }
+
+        // Ограничение размера файла
+        long maxSize = 1024 * 1024 * 5; // 5MB
+        if (file1.getSize() > maxSize) {
+            result.rejectValue("file1", "error.file", "Размер файла превышает допустимый предел.");
+            return;
+        }
     }
 
 

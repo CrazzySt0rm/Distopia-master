@@ -193,9 +193,6 @@
     width: 150px;
     height: 50px;
     color: red;
-<!--    background: gray;-->
-<!--    border-radius: 5px;-->
-
     }
 
     .cool_place_three {
@@ -208,9 +205,6 @@
     width: 150px;
     height: 50px;
     color: red;
-<!--    background: gray;-->
-<!--    border-radius: 5px;-->
-
     }
 
     .cool_place_zero {
@@ -223,30 +217,9 @@
     width: 150px;
     height: 50px;
     color: red;
-<!--    background: gray;-->
-<!--    border-radius: 5px;-->
-
     }
 
-
-
 </style>
-
-<script>
-
-    <!--    function ev() {-->
-    <!--    if (ev.keyCode == 13) {-->
-    <!--        ev[0].submit-->
-    <!--    }-->
-
-    <!--    $("form input").keypress(function(ev){-->
-    <!--        if (ev.keyCode == 13) {-->
-    <!--            $("form")[0].submit();-->
-    <!--        }-->
-    <!--    });-->
-
-</script>
-
 
 <!--    связать кнопки с полем ввода номера телефона-->
 <script>
@@ -264,75 +237,6 @@
 
 <body>
 
-<h1>Введите номер телефона</h1>
-<div class="norm_phne">
-    <button type="button" class="button28">1</button>
-    <button type="button" class="button28">2</button>
-    <button type="button" class="button28">3</button><br>
-    <button type="button" class="button28">4</button>
-    <button type="button" class="button28">5</button>
-    <button type="button" class="button28">6</button><br>
-    <button type="button" class="button28">7</button>
-    <button type="button" class="button28">8</button>
-    <button type="button" class="button28">9</button><br>
-    <button type="button" class="button28">0</button>
-</div>
-<form action="/dystopia_message" method="POST" enctype="multipart/form-data">
-    <input type="text" id="phone" name="phone" placeholder="Номер телефона">
-    <button type="submit">Отправить</button>
-</form>
-
-<div class="cool_place">
-    <form action="/dystopia_message/phone" enctype="multipart/form-data">
-        <button type="submit" class="button28" name="phone">1</button>
-        <br>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">2</button>
-        <br>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">3</button>
-        <br>
-    </form>
-</div>
-
-<div class="cool_place_two">
-    <form action="#">
-        <button type="submit" class="button28">4</button>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">5</button>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">6</button>
-    </form>
-</div>
-
-<div class="cool_place_three">
-    <form action="#">
-        <button type="submit" class="button28">7</button>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">8</button>
-    </form>
-
-    <form action="#">
-        <button type="submit" class="button28">9</button>
-    </form>
-</div>
-
-<div class="cool_place_zero">
-    <form action="#">
-        <button type="submit" class="button28">0</button>
-    </form>
-</div>
-
 <div class="wrapper">
 
     <div class="size01">
@@ -342,29 +246,29 @@
                 <h2>Messenger</h2>
             </div>
 
-            <div class="msg">
-                <div class="text_area">
-                    <form action="dystopia_message" method="post" enctype="multipart/form-data">
-                        <input type="text" class="navbar_x" name="message">
-                        <!--                        <button type="submit" hidden="hidden"></button>-->
-                    </form>
+<!--            <div class="msg">-->
+<!--                <div class="text_area">-->
+<!--                    <form action="dystopia_message" method="post" enctype="multipart/form-data">-->
+<!--                        <input type="text" class="navbar_x" name="message">-->
+<!--                        &lt;!&ndash;                        <button type="submit" hidden="hidden"></button>&ndash;&gt;-->
+<!--                    </form>-->
 
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="msg_response">
-                <div class="text_area">
-                    <form action="#">
-                        <div class="response_window">
-                            <label>
-                                <textarea data-th-text="${test}"></textarea>
-                            </label>
+<!--            <div class="msg_response">-->
+<!--                <div class="text_area">-->
+<!--                    <form action="#">-->
+<!--                        <div class="response_window">-->
+<!--                            <label>-->
+<!--                                <textarea data-th-text="${test}"></textarea>-->
+<!--                            </label>-->
 
 
-                        </div>
-                    </form>
-                </div>
-            </div>
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <div class="gf">
                 <img src="https://i.pinimg.com/originals/2d/90/92/2d9092a49b889204284f0dea4ce7ec8b.gif" width="250"

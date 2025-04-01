@@ -42,6 +42,10 @@ public class ImageService {
     private final static Logger log = Logger.getLogger(ImageStat.class.getName());
 
     private Image toImageEntity(MultipartFile file) throws IOException {
+        if (file == null || file.isEmpty()) {
+            return null;
+        }
+
         Image image = new Image();
         image.setName(file.getName());
         image.setOriginalFileName(file.getOriginalFilename());
@@ -52,18 +56,20 @@ public class ImageService {
     }
 
     public ImageStat saveImageStat(ImageStat imageStat, MultipartFile file1) throws IOException {
-        Image image1;
-        if (file1.getSize() != 0) {
-            image1 = toImageEntity(file1);
+        Image image1 = toImageEntity(file1);
+
+        if (image1 != null) {
             image1.setPreviewImage(true);
             imageStat.addImageToImageStat(image1);
         }
+
         log.info(imageStat.getTitle());
         ImageStat imageStatFromDb = imageStatRepository.save(imageStat);
         imageStatFromDb.setPreviewImageId(imageStatFromDb.getImages().get(0).getId());
 
         return imageStatRepository.save(imageStat);
     }
+
 
     public void deleteImageStat(Long id) {
         imageStatRepository.deleteById(id);

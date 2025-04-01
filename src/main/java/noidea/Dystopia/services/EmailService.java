@@ -2,20 +2,16 @@ package noidea.Dystopia.services;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import noidea.Dystopia.models.Email;
 import noidea.Dystopia.repositories.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 
 @Service
@@ -25,6 +21,9 @@ public class EmailService {
     private final JavaMailSender emailSender;
     private final EmailRepository emailRepository;
 
+    @Value("${email_tuz_word_app}")
+    private String senderAddress;
+
     public EmailService(JavaMailSender emailSender, EmailRepository emailRepository) {
         this.emailSender = emailSender;
         this.emailRepository = emailRepository;
@@ -32,7 +31,7 @@ public class EmailService {
 
     public void sendSimpleMessage(String to, String subject, String body) throws MailException {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("SCSerafim@mail.ru");
+        message.setFrom(senderAddress);
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
@@ -45,7 +44,7 @@ public class EmailService {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 
-        helper.setFrom("SCSerafim@mail.ru");
+        helper.setFrom(senderAddress);
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(text);
